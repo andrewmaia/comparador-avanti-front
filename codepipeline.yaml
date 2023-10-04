@@ -154,7 +154,7 @@ Resources:
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
-                ProjectName: !Ref CodeBuildProjectArquivosNecessariosFront
+                ProjectName: !Ref CodeBuildProjectBuildAndPackage
               InputArtifacts:
                 - Name: SourceCodeAsZip
               OutputArtifacts:
@@ -201,7 +201,7 @@ Resources:
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
-                ProjectName: !Ref CodeBuildProjectBuildAndPackage
+                ProjectName: !Ref CodeBuildProjectArquivosNecessariosFront
               InputArtifacts:
                 - Name: SourceCodeAsZip
               OutputArtifacts:
