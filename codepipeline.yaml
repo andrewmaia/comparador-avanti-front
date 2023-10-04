@@ -145,7 +145,7 @@ Resources:
                 - Name: !Sub ${AWS::StackName}ChangeSet
               RunOrder: 2
 
-        - Name: GerarPacotesPublicacao
+        - Name: GerarPacoteCriacaoBucketFront
           Actions:
             - Name: CodeBuild
               ActionTypeId:
@@ -160,7 +160,7 @@ Resources:
               OutputArtifacts:
                 - Name: BuildArtifactAsZip
 
-        - Name: PublicarEmProd
+        - Name: CriarBucketFront
           Actions:
             # uncomment this to have a manual approval step before deployment to production
             # - Name: ManualApproval
