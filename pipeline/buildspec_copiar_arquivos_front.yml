@@ -12,7 +12,8 @@ phases:
       - echo Build started
       - ls
       - mv src/* ./      
-      - rm -R src *.yml .git*       
+      - rm -R src pipeline *.yaml *.toml *.sh         
+      - ls      
   post_build:
     commands:
       - echo Build completed      
