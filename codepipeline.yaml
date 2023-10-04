@@ -147,14 +147,14 @@ Resources:
 
         - Name: GerarPacoteCriacaoBucketFront
           Actions:
-            - Name: CodeBuild
+            - Name: SamBuild
               ActionTypeId:
                 Category: Build
                 Owner: AWS
                 Provider: CodeBuild
                 Version: "1"
               Configuration:
-                ProjectName: !Ref CodeBuildProjectBuildAndPackage
+                ProjectName: !Ref CodeBuildProjectArquivosNecessariosFront
               InputArtifacts:
                 - Name: SourceCodeAsZip
               OutputArtifacts:
@@ -170,7 +170,7 @@ Resources:
             #    Provider: Manual
             #    Version: "1"
             #   RunOrder: 1
-            - Name: DeployProd
+            - Name: SamDeploy
               ActionTypeId:
                 Category: Build
                 Owner: AWS
@@ -191,6 +191,21 @@ Resources:
                   ]
               InputArtifacts:
                 - Name: BuildArtifactAsZip
+                
+        - Name: CopiarArquivosNecessarios
+          Actions:
+            - Name: CopiarArquivos
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref CodeBuildProjectBuildAndPackage
+              InputArtifacts:
+                - Name: SourceCodeAsZip
+              OutputArtifacts:
+                - Name: ArquivosFront                
 
   PipelineArtifactsBucket:
     Type: AWS::S3::Bucket
@@ -329,6 +344,7 @@ Resources:
                 Resource:
                   - !GetAtt CodeBuildProjectBuildAndPackage.Arn                
                   - !GetAtt CodeBuildProjectDeploy.Arn
+                  - !GetAtt CodeBuildProjectArquivosNecessariosFront.Arn                  
               - Effect: Allow
                 Action:
                   - "cloudformation:CreateStack"
@@ -459,6 +475,21 @@ Resources:
       Source:
         Type: CODEPIPELINE
         BuildSpec: pipeline/buildspec_deploy.yml
+        
+  CodeBuildProjectArquivosNecessariosFront:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
+        PrivilegedMode: false
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: pipeline/buildspec_copiar_arquivos_front.yml        
 Outputs:
   CodeStarConnectionArn:
     Condition: CreateConnection
