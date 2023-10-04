@@ -216,7 +216,7 @@ Resources:
                 Provider: Amazon S3
                 Version: "1"
               Configuration:
-                BucketName: comparadoravanti
+                BucketName: "comparadoravanti"
               InputArtifacts:
                 - Name: ArquivosFront
 
