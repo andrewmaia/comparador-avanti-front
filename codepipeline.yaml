@@ -327,6 +327,7 @@ Resources:
                   - "codebuild:StartBuild"
                   - "codebuild:BatchGetBuilds"
                 Resource:
+                  - !GetAtt CodeBuildProjectBuildAndPackage.Arn                
                   - !GetAtt CodeBuildProjectDeploy.Arn
               - Effect: Allow
                 Action:
