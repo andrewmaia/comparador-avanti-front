@@ -213,10 +213,11 @@ Resources:
               ActionTypeId:
                 Category: Deploy
                 Owner: AWS
-                Provider: Amazon S3
+                Provider: S3
                 Version: "1"
               Configuration:
                 BucketName: "comparadoravanti"
+                Extract: true
               InputArtifacts:
                 - Name: ArquivosFront
 
