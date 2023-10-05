@@ -218,6 +218,7 @@ Resources:
               Configuration:
                 BucketName: "comparadoravanti"
                 Extract: true
+                CannedACL: public-read
               InputArtifacts:
                 - Name: ArquivosFront
 
