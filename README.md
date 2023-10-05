@@ -57,21 +57,9 @@ sam delete
 
 ## Deploy automático de infra e código através de Pipeline
 
-SAM Cli permite criar uma pipeline que automatiza todo o processo de deploy para que não seja necessário rodar os comandos sam build e sam deploy manualmente. Para criar a pipeline, rode o comando: 
+Neste projeto o arquivo **codepipeline.yaml** e os arquivos da pasta pipeline foram criados manualmente (sem o comando sam pipeline init --bootstrap).
 
-```bash
-sam pipeline init --bootstrap 
-```
-
-O comando acima irá iniciar um passo a passo para gerar um arquivo de infra como código para gerar uma pipeline na AWS. Ao final do processo é criado o arquivo de infra como código chamado **codepipeline.yaml**.
-
-Também é criado uma pasta chamada pipeline onde está os arquivos com os comandos que os projetos do codebuild da pipeline irão rodar.
-
-Depois é necessário comitar esses arquivos no repositório.
-
-Obs: Novamente repare que esses arquivos já estão presentes no repositório porque o comando sam pipeline init já foi rodado para este projeto.  
-
-Depois rode o comando abaixo para criar a stack da pipeline:
+Depois foi commitado os arquivos de pipeline no repositório e rodados o comando:
 
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
@@ -89,15 +77,11 @@ O código como infra gerado em codepipeline.yaml ira gerar uma pipeline com os s
 
 **Estágio 2 - Atualização da Pipeline:** É neste estágio que ocorre a **auto-atualização da pipeline**. Aqui são executadas ações que irão pegar o conteudo do arquivo **codepipeline.yaml**  e republicar a stack que gera a pipeline. Assim qualquer alteração nesse arquivo resultará numa auto-atualização da pipeline.
 
-**Estágio 3 - Rodar Unit Tests:** Neste estágio é executado o projeto de codebuild que roda os testes através do arquivo **buildspec_unit_test.yml** da pasta pipeline.
+**Estágio 3 -Criar Bucket Front:** Neste estágio é criado o bucket onde é armezenado o site do front através do arquivo **buildspec_build_package.yml** da pasta pipeline.
 
-**Estágio 4 - Gerar pacotes de publicação:** Neste estágio é executado o projeto de codebuild que gera os pacotes com a stacks do front a serem publicadas  através do arquivo **buildspec_build_package.yml** da pasta pipeline.
+**Estágio 4 - Obter Arquivos Front:** Neste estágio é selecionado apenas os arquivos da pasta src do repositório para publicar o site do front através do arquivo **buildspec_copiar_arquivos_front.yml.yml** da pasta pipeline.
 
-**Estágio 5 - Publicar em Dev:** Neste estágio é executado o projeto de codebuild que publica na stack de dev as funções lambda através do arquivo **buildspec_deploy.yml** da pasta pipeline.
+**Estágio 5 - CopiarArquivosParaBucket:** Neste estágio é copiado os arquivos do site do front no bucket.
 
-**Estágio 6 - Publicar em Prod:** Neste estágio é executado o projeto de codebuild que publica na stack de prod as funções lambda através do arquivo **buildspec_deploy.yml** da pasta pipeline.
 
-Obs: Os estágios 5 e 6 utilizam o mesmo projeto de codebuild para publicar as stacks de dev e prod. O projeto consegue publicar em stacks diferentes porque utiliza variáveis de ambiente para cada estágio.
-
-Obs2: No arquivo codepipeline.yaml é definido mais alguns projetos de build que não são publicados na pipeline porque estão comentados (no caso do integration test) ou porque há algumas condições no código que só permitem criar o projeto quando determinadas variáveis estão setadas ( no caso do BuildAndDeployFeatureStack).
 
