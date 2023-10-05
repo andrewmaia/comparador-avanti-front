@@ -155,30 +155,6 @@ Resources:
                 Version: "1"
               Configuration:
                 ProjectName: !Ref CodeBuildProjectBuildAndPackage
-              InputArtifacts:
-                - Name: SourceCodeAsZip
-              OutputArtifacts:
-                - Name: BuildArtifactAsZip
-
-        - Name: CriarBucketFront
-          Actions:
-            # uncomment this to have a manual approval step before deployment to production
-            # - Name: ManualApproval
-            #   ActionTypeId:
-            #    Category: Approval
-            #    Owner: AWS
-            #    Provider: Manual
-            #    Version: "1"
-            #   RunOrder: 1
-            - Name: SamDeploy
-              ActionTypeId:
-                Category: Build
-                Owner: AWS
-                Provider: CodeBuild
-                Version: "1"
-              RunOrder: 2 # keeping run order as 2 in case manual approval is enabled
-              Configuration:
-                ProjectName: !Ref CodeBuildProjectDeploy
                 EnvironmentVariables: !Sub |
                   [
                     {"name": "ENV_TEMPLATE", "value": "packaged-prod.yaml"},
@@ -188,10 +164,12 @@ Resources:
                     {"name": "ENV_CLOUDFORMATION_EXECUTION_ROLE", "value": "${ProdCloudFormationExecutionExeRole}"},
                     {"name": "ENV_BUCKET", "value": "${ProdArtifactBucket}"},
                     {"name": "ENV_IMAGE_REPOSITORY", "value": "${ProdImageRepository}"}
-                  ]
+                  ]                
               InputArtifacts:
+                - Name: SourceCodeAsZip
+              OutputArtifacts:
                 - Name: BuildArtifactAsZip
-                
+
         - Name: ObterArquivosFront
           Actions:
             - Name: ObterArquivos
@@ -347,7 +325,6 @@ Resources:
                   - "codebuild:BatchGetBuilds"
                 Resource:
                   - !GetAtt CodeBuildProjectBuildAndPackage.Arn                
-                  - !GetAtt CodeBuildProjectDeploy.Arn
                   - !GetAtt CodeBuildProjectArquivosNecessariosFront.Arn                  
               - Effect: Allow
                 Action:
@@ -466,20 +443,7 @@ Resources:
         Type: CODEPIPELINE
         BuildSpec: pipeline/buildspec_build_package.yml
 
-  CodeBuildProjectDeploy:
-    Type: AWS::CodeBuild::Project
-    Properties:
-      Artifacts:
-        Type: CODEPIPELINE
-      Environment:
-        Type: LINUX_CONTAINER
-        ComputeType: BUILD_GENERAL1_SMALL
-        Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
-      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
-      Source:
-        Type: CODEPIPELINE
-        BuildSpec: pipeline/buildspec_deploy.yml
-        
+       
   CodeBuildProjectArquivosNecessariosFront:
     Type: AWS::CodeBuild::Project
     Properties:
