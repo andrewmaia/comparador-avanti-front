@@ -345,8 +345,7 @@ Resources:
                   - "s3:GetObjectVersion"
                   - "s3:PutObject"
                 Effect: Allow
-                Resource:
-                  Fn::Sub: */*
+                Resource: "*"
 
         - PolicyName: CodePipelineCodeBuildAndCloudformationAccess
           PolicyDocument:
