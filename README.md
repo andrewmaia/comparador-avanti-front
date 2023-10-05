@@ -59,13 +59,13 @@ sam delete
 
 Neste projeto o arquivo **codepipeline.yaml** e os arquivos da pasta pipeline foram criados manualmente (sem o comando sam pipeline init --bootstrap).
 
-Depois foi commitado os arquivos de pipeline no repositório e rodados o comando:
+Depois foi commitado os arquivos de pipeline no repositório e rodado o comando:
 
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
 
-Depois de criada a stack da pipeline, qualquer alteração no código  feitas no repositório no front e no código de infra do pipeline serão automáticamente atualizadas na AWS. Isso mesmo: A pipeline é capaz de se auto-atualizar.
+Assim é criada a stack da pipeline, qualquer alteração no código  feita no repositório irá iniciar a pipeline que irá atualizar a propria pipeline (caso o arquivo **codepipeline.yaml** tenha sido alterado ou atualizar o site front. 
 
 Importante: A primeira vez que a pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
 
