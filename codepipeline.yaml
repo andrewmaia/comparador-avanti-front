@@ -145,9 +145,9 @@ Resources:
                 - Name: !Sub ${AWS::StackName}ChangeSet
               RunOrder: 2
 
-        - Name: GerarPacoteCriacaoBucketFront
+        - Name: CriarBucketFront
           Actions:
-            - Name: SamBuild
+            - Name: SamBuildDeploy
               ActionTypeId:
                 Category: Build
                 Owner: AWS

@@ -17,6 +17,9 @@ phases:
                     --region ${PROD_REGION}
                     --output-template-file packaged-prod.yaml
       - . ./assume-role.sh ${ENV_PIPELINE_EXECUTION_ROLE} deploy
+      - echo ${ENV_TEMPLATE}
+      - echo ${ENV_BUCKET}      
+      - echo ${ENV_CLOUDFORMATION_EXECUTION_ROLE}            
       - sam deploy --stack-name ${ENV_STACK_NAME}
                     --template ${ENV_TEMPLATE}
                     --capabilities CAPABILITY_IAM
