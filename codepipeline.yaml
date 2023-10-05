@@ -346,7 +346,7 @@ Resources:
                   - "s3:PutObject"
                 Effect: Allow
                 Resource:
-                  Fn::Sub: ${PipelineArtifactsBucket.Arn}/*
+                  Fn::Sub: */*
 
         - PolicyName: CodePipelineCodeBuildAndCloudformationAccess
           PolicyDocument:
