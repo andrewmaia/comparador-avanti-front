@@ -17,7 +17,6 @@ phases:
                     --region ${PROD_REGION}
                     --output-template-file packaged-prod.yaml
       - . ./assume-role.sh ${ENV_PIPELINE_EXECUTION_ROLE} deploy
-      - ls
       - rm -R samconfig.toml
       - sam deploy --stack-name ${ENV_STACK_NAME}
                     --template ${ENV_TEMPLATE}
