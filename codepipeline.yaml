@@ -377,7 +377,7 @@ Resources:
                 Provider: S3
                 Version: "1"
               Configuration:
-                BucketName: "comparadoravanti"
+                BucketName: "comparador-avanti-front"
                 Extract: true
                 CannedACL: public-read
               InputArtifacts:
