@@ -1,6 +1,6 @@
 version = 0.1
 [default.deploy.parameters]
-stack_name = "comparador-avanti-front"
+stack_name = "comparador-avanti-front2"
 resolve_s3 = true
 s3_prefix = "comparador-avanti-front"
 region = "us-east-1"
