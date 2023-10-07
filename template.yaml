@@ -15,7 +15,8 @@ Resources:
         BlockPublicAcls: false
         BlockPublicPolicy: false
         IgnorePublicAcls: false
-        RestrictPublicBuckets: false      
+        RestrictPublicBuckets: false   
+      AccessControl: AwsExecRead
       WebsiteConfiguration:
         IndexDocument: index.html
         
