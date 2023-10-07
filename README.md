@@ -6,6 +6,8 @@ Todo o passo a passo abaixo já foi realizado. Para fazer deploy deste projeto b
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
 
+Importante: A primeira vez que a pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+
 ## Infra como código
 
 Este projeto contém o front composto de HTML, Java Script e CSS.
