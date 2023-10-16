@@ -2,7 +2,7 @@
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
 
 // Selectors
-//const divPrincipal = document.getElementById("divPrincipal");
+const secPlanosComparacao = document.getElementById("secPlanosComparacao");
 const btnComparar = document.getElementById("btnComparar");
 
 // Event Listeners
@@ -11,37 +11,6 @@ window.addEventListener("load", carregarPlanos);
 window.addEventListener("load", carregarJogos);
 
 // Functions
-function comparar(event) {
-  event.preventDefault(); //Nao faz subimit
-  let jogos = "";
-  const selects = document.querySelectorAll("select");
-  selects.forEach((select) => {
-    if (select.value !== "") {
-      jogos = jogos + select.name + "=" + select.value + "&";
-    }
-  });
-
-  if (jogos === "") return;
-
-  jogos = jogos.slice(0, jogos.length - 1);
-
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = mostrarComparacao;
-  xhttp.open(
-    "POST",
-    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/comparar"
-  );
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send(jogos);
-}
-
-function mostrarComparacao() {
-  console.info(this.responseText);
-  document.write(this.responseText);
-  //divPrincipal.classList.remove("naoAparecer");
-  //divPrincipal.classList.add("aparecer");
-}
-
 function carregarPlanos() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarPlanos;
@@ -89,7 +58,6 @@ function carregarJogos() {
 }
 
 function mostrarJogos() {
-  console.log(this.responseText);
   const jogos = JSON.parse(this.responseText);
   let jogosHtml = "";
 
@@ -113,4 +81,48 @@ function mostrarJogos() {
     </li>`;
   });
   document.getElementById("ulJogos").innerHTML = jogosHtml;
+}
+
+function comparar(event) {
+  event.preventDefault(); //Nao faz subimit
+  let jogos = "";
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    if (select.value !== "") {
+      jogos = jogos + select.name + "=" + select.value + "&";
+    }
+  });
+
+  if (jogos === "") return;
+
+  jogos = jogos.slice(0, jogos.length - 1);
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = mostrarComparacao;
+  xhttp.open(
+    "POST",
+    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/comparar"
+  );
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(jogos);
+}
+
+function mostrarComparacao() {
+  const planosComparacao = JSON.parse(this.responseText);
+  console.log(planosComparacao);
+  let planosHtml = "";
+
+  planosComparacao.forEach((plano) => {
+    planosHtml =
+      planosHtml +
+      `<li>
+        <article>
+          <h3>${plano.planoNome}</h3>
+          <h4>Você gastaria: R$ ${plano.valorTotal}</h4>
+        </article>
+      </li>`;
+  });
+  document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
+  secPlanosComparacao.classList.remove("naoAparecer");
+  secPlanosComparacao.classList.add("aparecer");
 }

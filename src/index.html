@@ -31,19 +31,17 @@
       </section>
       <section>
         <h2>Últimos jogos</h2>
-        <form
-          method="post"
-          action="https://zhlu0w882h.execute-api.us-east-1.amazonaws.com/Prod/comparar"
-        >
-          <nav>
-            <ul id="ulJogos"></ul>
-          </nav>
-          <button id="btnComparar" type="button">Comparar</button>
-        </form>
+        <nav>
+          <ul id="ulJogos"></ul>
+        </nav>
+        <button id="btnComparar" type="button">Comparar</button>
       </section>
-      <div id="divPrincipal" class="naoAparecer">
-        <b>Ei você comparou com o site!</b>
-      </div>
+      <section id="secPlanosComparacao" class="naoAparecer">
+        <h2>Resultado</h2>
+        <nav>
+          <ul id="ulPlanosComparacao"></ul>
+        </nav>
+      </section>
     </main>
     <script src="./app.js"></script>
   </body>
