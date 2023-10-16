@@ -1,5 +1,6 @@
 /** @format */
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
+"use strict";
 
 // Selectors
 const secPlanosComparacao = document.getElementById("secPlanosComparacao");
