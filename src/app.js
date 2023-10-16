@@ -2,20 +2,44 @@
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
 
 // Selectors
-const divPrincipal = document.getElementById("divPrincipal");
+//const divPrincipal = document.getElementById("divPrincipal");
 const btnComparar = document.getElementById("btnComparar");
 
 // Event Listeners
-btnComparar.addEventListener("click", apresentarMensagem);
+btnComparar.addEventListener("click", comparar);
 window.addEventListener("load", carregarPlanos);
 window.addEventListener("load", carregarJogos);
 
 // Functions
-function apresentarMensagem(event) {
-  //Nao faz subimit
-  event.preventDefault();
-  divPrincipal.classList.remove("naoAparecer");
-  divPrincipal.classList.add("aparecer");
+function comparar(event) {
+  event.preventDefault(); //Nao faz subimit
+  let jogos = "";
+  const selects = document.querySelectorAll("select");
+  selects.forEach((select) => {
+    if (select.value !== "") {
+      jogos = jogos + select.name + "=" + select.value + "&";
+    }
+  });
+
+  if (jogos === "") return;
+
+  jogos = jogos.slice(0, jogos.length - 1);
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = mostrarComparacao;
+  xhttp.open(
+    "POST",
+    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/comparar"
+  );
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(jogos);
+}
+
+function mostrarComparacao() {
+  console.info(this.responseText);
+  document.write(this.responseText);
+  //divPrincipal.classList.remove("naoAparecer");
+  //divPrincipal.classList.add("aparecer");
 }
 
 function carregarPlanos() {
@@ -25,7 +49,7 @@ function carregarPlanos() {
   //xhttp.open("GET", "http://127.0.0.1:8080/planos");
   xhttp.open(
     "GET",
-    "https://eoulrgzgv2.execute-api.us-east-1.amazonaws.com/Prod/planos"
+    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/planos"
   );
   xhttp.send();
 }
@@ -59,7 +83,7 @@ function carregarJogos() {
   //xhttp.open("GET", "http://127.0.0.1:8080/jogos");
   xhttp.open(
     "GET",
-    "https://eoulrgzgv2.execute-api.us-east-1.amazonaws.com/Prod/jogos"
+    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/jogos"
   );
   xhttp.send();
 }
@@ -77,13 +101,13 @@ function mostrarJogos() {
         <h3>Palmeiras x ${jogo.adversario}</h3>
         <h4>R$ ${jogo.dataJogo}</h4>
         <label for="setor">Setor:</>
-        <select id="setor" name="setor">
-          <option value="0">Não fui</option>        
-          <option value="1">Superior: ${jogo.superiorValor}</option>
-          <option value="2">Gol Norte: ${jogo.golNorteValor}</option>
-          <option value="3">Gol Sul: ${jogo.golSulValor}</option>
-          <option value="4">Central Oeste: ${jogo.centralOesteValor}</option>
-          <option value="5">Central Leste: ${jogo.centralLesteValor}</option>                    
+        <select id="jogo_${jogo.id}" name="${jogo.id}">
+          <option value="">Não fui</option>        
+          <option value="s">Superior: ${jogo.superiorValor}</option>
+          <option value="gn">Gol Norte: ${jogo.golNorteValor}</option>
+          <option value="gs">Gol Sul: ${jogo.golSulValor}</option>
+          <option value="co">Central Oeste: ${jogo.centralOesteValor}</option>
+          <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>                    
         </select>        
       </article>
     </li>`;
