@@ -72,11 +72,14 @@ function mostrarJogos() {
         <label for="setor">Setor:</>
         <select id="jogo_${jogo.id}" name="${jogo.id}">
           <option value="">Não fui</option>        
-          <option value="s">Superior: ${jogo.superiorValor}</option>
+          <option value="sn">Superior Norte: ${jogo.superiorNorteValor}</option>
+          <option value="ss">Superior Sul: ${jogo.superiorSulValor}</option>
+          <option value="so">Superior Oeste: ${jogo.superioOesteValor}</option>
+          <option value="sl">Superior Leste: ${jogo.superioLesteValor}</option>          
           <option value="gn">Gol Norte: ${jogo.golNorteValor}</option>
           <option value="gs">Gol Sul: ${jogo.golSulValor}</option>
-          <option value="co">Central Oeste: ${jogo.centralOesteValor}</option>
-          <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>                    
+          <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>
+          <option value="co">Central Oeste: ${jogo.centralOesteValor}</option>          
         </select>        
       </article>
     </li>`;
