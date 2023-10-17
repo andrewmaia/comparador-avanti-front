@@ -2,6 +2,9 @@
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
 "use strict";
 
+const backendDefaultUrl =
+  "https://l1dmepq0p3.execute-api.us-east-1.amazonaws.com/Prod";
+
 // Selectors
 const secPlanosComparacao = document.getElementById("secPlanosComparacao");
 const btnComparar = document.getElementById("btnComparar");
@@ -16,11 +19,7 @@ function carregarPlanos() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarPlanos;
 
-  //xhttp.open("GET", "http://127.0.0.1:8080/planos");
-  xhttp.open(
-    "GET",
-    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/planos"
-  );
+  xhttp.open("GET", `${backendDefaultUrl}/planos`);
   xhttp.send();
 }
 
@@ -50,11 +49,7 @@ function carregarJogos() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarJogos;
 
-  //xhttp.open("GET", "http://127.0.0.1:8080/jogos");
-  xhttp.open(
-    "GET",
-    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/jogos"
-  );
+  xhttp.open("GET", `${backendDefaultUrl}/jogos`);
   xhttp.send();
 }
 
@@ -68,14 +63,14 @@ function mostrarJogos() {
       `<li>
       <article>
         <h3>Palmeiras x ${jogo.adversario}</h3>
-        <h4>R$ ${jogo.dataJogo}</h4>
+        <h4>${jogo.dataJogo}</h4>
         <label for="setor">Setor:</>
         <select id="jogo_${jogo.id}" name="${jogo.id}">
           <option value="">Não fui</option>        
           <option value="sn">Superior Norte: ${jogo.superiorNorteValor}</option>
           <option value="ss">Superior Sul: ${jogo.superiorSulValor}</option>
-          <option value="so">Superior Oeste: ${jogo.superioOesteValor}</option>
-          <option value="sl">Superior Leste: ${jogo.superioLesteValor}</option>          
+          <option value="so">Superior Oeste: ${jogo.superiorOesteValor}</option>
+          <option value="sl">Superior Leste: ${jogo.superiorLesteValor}</option>          
           <option value="gn">Gol Norte: ${jogo.golNorteValor}</option>
           <option value="gs">Gol Sul: ${jogo.golSulValor}</option>
           <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>
@@ -103,10 +98,7 @@ function comparar(event) {
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarComparacao;
-  xhttp.open(
-    "POST",
-    "https://8x18suf4he.execute-api.us-east-1.amazonaws.com/Prod/comparar"
-  );
+  xhttp.open("POST", `${backendDefaultUrl}/comparar`);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send(jogos);
 }
