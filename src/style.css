@@ -15,9 +15,6 @@ body {
   background-image: linear-gradient(120deg, rgb(181, 218, 181), green);
   color: white;
   font-family: "Poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 button {
@@ -27,6 +24,65 @@ button {
   padding: 5px;
   cursor: pointer;
   font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*Inicio Containers*/
+.containerPrincipal {
+  display: flex;
+  flex-direction: column;
+}
+
+/*Nivel 1 */
+.titulo {
+  text-align: center;
+}
+
+.containerJogoComparacaoPlano {
+  display: flex;
+  flex-direction: row;
+}
+
+.rodape {
+  text-align: center;
+}
+
+/*Nivel 2 */
+.containerJogoComparacao {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px 0px 10px 30px;
+}
+
+.planos {
+  border: solid;
+  width: 20%;
+  padding: 10px 0px 10px 30px;
+}
+/*Nivel 3 */
+
+.jogos {
+  width: 100%;
+}
+
+.comparacao {
+  width: 100%;
+  text-align: center;
+}
+/*Fim Containers*/
+
+#ulJogos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.jogo {
+  padding: 10px;
 }
 
 .naoAparecer {

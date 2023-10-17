@@ -3,10 +3,10 @@
 "use strict";
 
 const backendDefaultUrl =
-  "https://l1dmepq0p3.execute-api.us-east-1.amazonaws.com/Prod";
+  "https://7w5nwqbjsd.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
-const secPlanosComparacao = document.getElementById("secPlanosComparacao");
+const divPlanosComparacao = document.getElementById("divPlanosComparacao");
 const btnComparar = document.getElementById("btnComparar");
 
 // Event Listeners
@@ -60,7 +60,7 @@ function mostrarJogos() {
   jogos.forEach((jogo) => {
     jogosHtml =
       jogosHtml +
-      `<li>
+      `<li class="jogo">
       <article>
         <h3>Palmeiras x ${jogo.adversario}</h3>
         <h4>${jogo.dataJogo}</h4>
@@ -119,6 +119,6 @@ function mostrarComparacao() {
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
-  secPlanosComparacao.classList.remove("naoAparecer");
-  secPlanosComparacao.classList.add("aparecer");
+  divPlanosComparacao.classList.remove("naoAparecer");
+  divPlanosComparacao.classList.add("aparecer");
 }
