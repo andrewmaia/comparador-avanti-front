@@ -9,6 +9,5 @@ phases:
     commands:
       # trigger the unit tests here
       - echo 'Running unit tests'
-      - ls
       - npm install
-      - npx eslint app.js
+      - npx eslint src/app.js
