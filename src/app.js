@@ -121,13 +121,13 @@ function comparar(event) {
 
 function mostrarComparacao() {
   const planosComparacao = JSON.parse(this.responseText);
-  console.log(planosComparacao);
+  planosComparacao.sort((a, b) => a.valorTotal - b.valorTotal);
   let planosHtml = "";
 
-  planosComparacao.forEach((plano) => {
+  planosComparacao.forEach((plano, index) => {
     planosHtml =
       planosHtml +
-      `<li>
+      `<li ${index == 0 ? "class=planoDestacado" : ""}>
         <article>
           <h3>${plano.planoNome}</h3>
           <h4>Você gastaria: ${formatarDinheiro(plano.valorTotal)}</h4>
