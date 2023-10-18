@@ -63,18 +63,22 @@ function mostrarJogos() {
       `<li class="jogo">
       <article>
         <h3>Palmeiras x ${jogo.adversario}</h3>
-        <h4>${jogo.dataJogo}</h4>
+        <h4>${new Date(jogo.dataJogo).toLocaleDateString()}</h4>
         <label for="setor">Setor:</>
         <select id="jogo_${jogo.id}" name="${jogo.id}">
           <option value="">Não fui</option>        
           <option value="sn">Superior Norte: ${jogo.superiorNorteValor}</option>
           <option value="ss">Superior Sul: ${jogo.superiorSulValor}</option>
           <option value="so">Superior Oeste: ${jogo.superiorOesteValor}</option>
-          <option value="sl">Superior Leste: ${jogo.superiorLesteValor}</option>          
+          <option value="sl">Superior Leste: ${
+            jogo.superiorLesteValor
+          }</option>          
           <option value="gn">Gol Norte: ${jogo.golNorteValor}</option>
           <option value="gs">Gol Sul: ${jogo.golSulValor}</option>
           <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>
-          <option value="co">Central Oeste: ${jogo.centralOesteValor}</option>          
+          <option value="co">Central Oeste: ${
+            jogo.centralOesteValor
+          }</option>          
         </select>        
       </article>
     </li>`;
