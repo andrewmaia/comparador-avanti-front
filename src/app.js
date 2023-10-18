@@ -33,7 +33,7 @@ function mostrarPlanos() {
       `<li>
       <article>
         <h3>${plano.nome}</h3>
-        <h4>R$ ${plano.valor}</h4>
+        <h4>${formatarDinheiro(plano.valor)}</h4>
         <p>${plano.centralOesteDesconto}% - CENTRAL OESTE</p>
         <p>${plano.centralLesteDesconto}% - CENTRAL LESTE</p>        
         <p>${plano.superiorDesconto}% - SUPERIOR</p>
@@ -67,18 +67,30 @@ function mostrarJogos() {
         <label for="setor">Setor:</>
         <select id="jogo_${jogo.id}" name="${jogo.id}">
           <option value="">Não fui</option>        
-          <option value="sn">Superior Norte: ${jogo.superiorNorteValor}</option>
-          <option value="ss">Superior Sul: ${jogo.superiorSulValor}</option>
-          <option value="so">Superior Oeste: ${jogo.superiorOesteValor}</option>
-          <option value="sl">Superior Leste: ${
+          <option value="sn">Superior Norte: ${formatarDinheiro(
+            jogo.superiorNorteValor
+          )}</option>
+          <option value="ss">Superior Sul: ${formatarDinheiro(
+            jogo.superiorSulValor
+          )}</option>
+          <option value="so">Superior Oeste: ${formatarDinheiro(
+            jogo.superiorOesteValor
+          )}</option>
+          <option value="sl">Superior Leste: ${formatarDinheiro(
             jogo.superiorLesteValor
-          }</option>          
-          <option value="gn">Gol Norte: ${jogo.golNorteValor}</option>
-          <option value="gs">Gol Sul: ${jogo.golSulValor}</option>
-          <option value="cl">Central Leste: ${jogo.centralLesteValor}</option>
-          <option value="co">Central Oeste: ${
+          )}</option>          
+          <option value="gn">Gol Norte: ${formatarDinheiro(
+            jogo.golNorteValor
+          )}</option>
+          <option value="gs">Gol Sul: ${formatarDinheiro(
+            jogo.golSulValor
+          )}</option>
+          <option value="cl">Central Leste: ${formatarDinheiro(
+            jogo.centralLesteValor
+          )}</option>
+          <option value="co">Central Oeste: ${formatarDinheiro(
             jogo.centralOesteValor
-          }</option>          
+          )}</option>          
         </select>        
       </article>
     </li>`;
@@ -118,11 +130,16 @@ function mostrarComparacao() {
       `<li>
         <article>
           <h3>${plano.planoNome}</h3>
-          <h4>Você gastaria: R$ ${plano.valorTotal}</h4>
+          <h4>Você gastaria: ${formatarDinheiro(plano.valorTotal)}</h4>
         </article>
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
   divPlanosComparacao.classList.remove("naoAparecer");
   divPlanosComparacao.classList.add("aparecer");
+}
+
+//Auxiliares
+function formatarDinheiro(valor) {
+  return "R$ " + valor.toLocaleString(undefined, { minimumFractionDigits: 2 });
 }
