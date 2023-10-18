@@ -625,7 +625,7 @@ Resources:
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
-        BuildSpec: pipeline/buildspec_eslint.yml.yml
+        BuildSpec: pipeline/buildspec_eslint.yml
 
   CodeBuildProjectBuildAndPackage:
     Type: AWS::CodeBuild::Project
