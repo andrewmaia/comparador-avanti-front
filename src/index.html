@@ -17,41 +17,49 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <title>Comparador Avanti</title>
-    <link rel="icon" type="image/x-icon" href="/src/favicon.ico">    
+    <link rel="icon" type="image/x-icon" href="/src/favicon.ico" />
   </head>
   <body>
-    <div class="containerPrincipal">
-      <header class="titulo">
-        <h1>Comparador de Planos Avanti</h1>
+    <main>
+      <header class="header">
+        <h1>Comparador Avanti</h1>
       </header>
-      <main class="containerJogoComparacaoPlano">
-        <section class="planos">
+
+      <!-- Hero -->
+      <section class="hero">
+        <h2>Como Funciona?</h2>
+        <p>
+          Com o comparador avanti você seleciona os jogos que você foi para
+          comparar em qual planos você economizaria mais!
+        </p>
+      </section>
+
+      <div class="flex-container wrapper">
+        <!-- Content -->
+        <section class="content">
+          <h2>Últimos jogos</h2>
+          <nav>
+            <ul id="ulJogos"></ul>
+          </nav>
+          <button id="btnComparar" type="button">Comparar</button>
+          <div id="divPlanosComparacao" class="naoAparecer">
+            <h2>Resultado</h2>
+            <nav>
+              <ul id="ulPlanosComparacao"></ul>
+            </nav>
+          </div>
+        </section>
+
+        <aside class="sidebar">
           <h2>Planos Disponíveis</h2>
           <nav>
             <ul id="ulPlanos"></ul>
           </nav>
-        </section>
-        <div class="containerJogoComparacao">
-          <section class="jogos">
-            <h2>Últimos jogos</h2>
-            <nav>
-              <ul id="ulJogos"></ul>
-            </nav>
-            
-          </section>
-          <section class="comparacao">
-            <button id="btnComparar" type="button">Comparar</button>            
-            <div id="divPlanosComparacao" class="naoAparecer">                        
-              <h2>Resultado</h2>
-              <nav>
-                <ul id="ulPlanosComparacao"></ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </main>
-      <footer class="rodape">Desenvolvido por Andrew - 2023</footer>
-    </div>
+        </aside>
+      </div>
+
+      <footer class="footer">Desenvolvido por Andrew Maia - 2023</footer>
+    </main>
     <script src="./app.js"></script>
   </body>
 </html>

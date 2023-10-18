@@ -1,10 +1,12 @@
 /** @format */
 
-/* Remove estilos do navegador*/
-* {
+main,
+header,
+section,
+aside,
+footer {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  padding: 20px;
 }
 
 header {
@@ -30,50 +32,37 @@ ul {
   list-style-type: none;
 }
 
-/*Inicio Containers*/
-.containerPrincipal {
-  display: flex;
-  flex-direction: column;
-}
-
-/*Nivel 1 */
-.titulo {
+.header {
   text-align: center;
 }
 
-.containerJogoComparacaoPlano {
-  display: flex;
-  flex-direction: row;
-}
-
-.rodape {
+.hero {
   text-align: center;
 }
 
-/*Nivel 2 */
-.containerJogoComparacao {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  padding: 10px 0px 10px 30px;
-}
-
-.planos {
-  border: solid;
-  width: 20%;
-  padding: 10px 0px 10px 30px;
-}
-/*Nivel 3 */
-
-.jogos {
-  width: 100%;
-}
-
-.comparacao {
-  width: 100%;
+.content {
+  flex: 1;
   text-align: center;
 }
-/*Fim Containers*/
+
+.sidebar {
+  flex: 0 1 300px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 75rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .flex-container {
+    display: flex;
+  }
+}
 
 #ulJogos {
   display: flex;
