@@ -337,6 +337,19 @@ Resources:
               OutputArtifacts:
                 - Name: !Sub ${AWS::StackName}ChangeSet
               RunOrder: 2
+              
+        - Name: RodarEslint
+          Actions:
+            - Name: Eslint
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref CodeBuildProjectEslint
+              InputArtifacts:
+                - Name: SourceCodeAsZip
 
         - Name: CriarBucketFront
           Actions:
@@ -507,6 +520,7 @@ Resources:
                   - "codebuild:StartBuild"
                   - "codebuild:BatchGetBuilds"
                 Resource:
+                  - !GetAtt CodeBuildProjectEslint.Arn                
                   - !GetAtt CodeBuildProjectBuildAndPackage.Arn                
                   - !GetAtt CodeBuildProjectArquivosNecessariosFront.Arn                  
               - Effect: Allow
@@ -599,6 +613,19 @@ Resources:
                 Condition:
                   StringEquals:
                     aws:ResourceTag/Role: pipeline-execution-role
+  CodeBuildProjectEslint:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/amazonlinux2-x86_64-standard:3.0
+      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      Source:
+        Type: CODEPIPELINE
+        BuildSpec: pipeline/buildspec_eslint.yml.yml
 
   CodeBuildProjectBuildAndPackage:
     Type: AWS::CodeBuild::Project
