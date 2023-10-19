@@ -3,7 +3,7 @@
 "use strict";
 
 const backendDefaultUrl =
-  "https://mwo0qwgmyi.execute-api.us-east-1.amazonaws.com/Prod";
+  "https://t3y0n3lih3.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
 const divPlanosComparacao = document.getElementById("divPlanosComparacao");
