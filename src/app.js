@@ -8,11 +8,13 @@ const backendDefaultUrl =
 // Selectors
 const divPlanosComparacao = document.getElementById("divPlanosComparacao");
 const btnComparar = document.getElementById("btnComparar");
+const rodape = document.getElementsByTagName("footer")[0];
 
 // Event Listeners
 btnComparar.addEventListener("click", comparar);
 window.addEventListener("load", carregarPlanos);
 window.addEventListener("load", carregarJogos);
+window.addEventListener("load", carregarRodape);
 
 // Functions
 function carregarPlanos() {
@@ -96,6 +98,10 @@ function mostrarJogos() {
     </li>`;
   });
   document.getElementById("ulJogos").innerHTML = jogosHtml;
+}
+
+function carregarRodape() {
+  rodape.innerHTML = rodape.innerHTML.replace("ano", new Date().getFullYear());
 }
 
 function comparar(event) {
