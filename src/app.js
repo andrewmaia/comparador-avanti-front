@@ -114,7 +114,10 @@ function comparar(event) {
     }
   });
 
-  if (jogos === "") return;
+  if (jogos === "") {
+    alert("É necessário selecionar ao menos um jogo para comparar!");
+    return;
+  }
 
   jogos = jogos.slice(0, jogos.length - 1);
 
