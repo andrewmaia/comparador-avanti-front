@@ -3,10 +3,13 @@
 "use strict";
 
 const backendDefaultUrl =
-  "https://t3y0n3lih3.execute-api.us-east-1.amazonaws.com/Prod";
+  "https://w522vlbyp4.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
-const divPlanosComparacao = document.getElementById("divPlanosComparacao");
+const secResultadoComparacao = document.getElementById(
+  "secResultadoComparacao"
+);
+const h2Resultado = document.getElementById("h2Resultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
 
@@ -32,7 +35,7 @@ function mostrarPlanos() {
   planos.forEach((plano) => {
     planosHtml =
       planosHtml +
-      `<li>
+      `<li class="plano">
       <article>
         <h3>${plano.nome}</h3>
         <h4>${formatarDinheiro(plano.valor)}</h4>
@@ -144,8 +147,10 @@ function mostrarComparacao() {
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
-  divPlanosComparacao.classList.remove("naoAparecer");
-  divPlanosComparacao.classList.add("aparecer");
+  secResultadoComparacao.classList.remove("naoAparecer");
+  secResultadoComparacao.classList.add("aparecer");
+  h2Resultado.classList.remove("naoAparecer");
+  h2Resultado.classList.add("aparecer");
 }
 
 //Auxiliares

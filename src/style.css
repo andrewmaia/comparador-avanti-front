@@ -29,6 +29,7 @@ button {
 }
 
 ul {
+  padding: 0;
   list-style-type: none;
 }
 
@@ -45,8 +46,21 @@ ul {
   text-align: center;
 }
 
+#secJogos {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding-bottom: 40px;
+}
+
+#secResultadoComparacao {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding-bottom: 40px;
+}
+
 .sidebar {
   flex: 0 1 300px;
+  text-align: center;
 }
 
 .footer {
@@ -71,18 +85,34 @@ ul {
 }
 
 .jogo {
-  padding: 10px;
+  padding: 20px 11px;
+  text-align: left;
 }
 
 .naoAparecer {
+  display: none;
   opacity: 0;
 }
 
 .aparecer {
+  display: block;
   opacity: 1;
   transition: all 2.5s linear;
 }
 
-.planoDestacado {
-  border: 1px solid #b80e0e;
+.plano {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+#btnComparar {
+  margin-top: 30px;
 }
