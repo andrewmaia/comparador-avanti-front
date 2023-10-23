@@ -23,9 +23,10 @@ button {
   background-color: rgb(81, 132, 30);
   color: white;
   border: none;
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
   font-size: 20px;
+  border-radius: 3px;
 }
 
 ul {
@@ -41,30 +42,10 @@ ul {
   text-align: center;
 }
 
-.content {
-  flex: 1;
-  text-align: center;
-}
-
-#secJogos {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
-  padding-bottom: 40px;
-}
-
-#secResultadoComparacao {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
-  padding-bottom: 40px;
-}
-
-.sidebar {
-  flex: 0 1 300px;
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
+@media screen and (min-width: 1000px) {
+  .flex-container {
+    display: flex;
+  }
 }
 
 .wrapper {
@@ -72,10 +53,16 @@ ul {
   max-width: 75rem;
 }
 
-@media screen and (min-width: 1000px) {
-  .flex-container {
-    display: flex;
-  }
+.content {
+  flex: 1;
+  text-align: center;
+}
+
+/*Jogos Inicio*/
+
+#secJogos {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
 }
 
 #ulJogos {
@@ -89,6 +76,14 @@ ul {
   text-align: left;
 }
 
+#btnComparar {
+  margin-top: 30px;
+}
+
+/*Jogos Fim*/
+
+/*Resultado Inicio*/
+
 .naoAparecer {
   display: none;
   opacity: 0;
@@ -100,19 +95,31 @@ ul {
   transition: all 2.5s linear;
 }
 
+#secResultado {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding-bottom: 40px;
+}
+
+/*Resultado Fim*/
+
+/*Planos Inicio*/
+.sidebar {
+  flex: 0 1 300px;
+  text-align: center;
+}
+
 .plano {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
   font-size: 12px;
 }
+/*Planos Fim*/
 
-#btnComparar {
-  margin-top: 30px;
+.footer {
+  text-align: center;
 }

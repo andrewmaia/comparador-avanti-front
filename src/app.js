@@ -6,9 +6,7 @@ const backendDefaultUrl =
   "https://w522vlbyp4.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
-const secResultadoComparacao = document.getElementById(
-  "secResultadoComparacao"
-);
+const secResultado = document.getElementById("secResultado");
 const h2Resultado = document.getElementById("h2Resultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
@@ -147,8 +145,8 @@ function mostrarComparacao() {
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
-  secResultadoComparacao.classList.remove("naoAparecer");
-  secResultadoComparacao.classList.add("aparecer");
+  secResultado.classList.remove("naoAparecer");
+  secResultado.classList.add("aparecer");
   h2Resultado.classList.remove("naoAparecer");
   h2Resultado.classList.add("aparecer");
 }
