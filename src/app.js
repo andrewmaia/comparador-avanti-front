@@ -7,7 +7,6 @@ const backendDefaultUrl =
 
 // Selectors
 const secResultado = document.getElementById("secResultado");
-const h2Resultado = document.getElementById("h2Resultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
 
@@ -147,8 +146,6 @@ function mostrarComparacao() {
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
   secResultado.classList.remove("naoAparecer");
   secResultado.classList.add("aparecer");
-  h2Resultado.classList.remove("naoAparecer");
-  h2Resultado.classList.add("aparecer");
 }
 
 //Auxiliares

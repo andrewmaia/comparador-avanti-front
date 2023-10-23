@@ -16,7 +16,7 @@ header {
 body {
   background-image: url("images/bg-planos.jpg");
   color: white;
-  font-family: "roboto", sans-serif;
+  font-family: sans-serif;
 }
 
 button {
@@ -27,6 +27,7 @@ button {
   cursor: pointer;
   font-size: 20px;
   border-radius: 3px;
+  margin-top: 30px;
 }
 
 ul {
@@ -60,7 +61,7 @@ ul {
 
 /*Jogos Inicio*/
 
-#secJogos {
+.secJogos {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
 }
@@ -74,10 +75,6 @@ ul {
 .jogo {
   padding: 20px 11px;
   text-align: left;
-}
-
-#btnComparar {
-  margin-top: 30px;
 }
 
 /*Jogos Fim*/
@@ -96,9 +93,12 @@ ul {
 }
 
 #secResultado {
+  padding-bottom: 40px;
+}
+
+#secResultado nav {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
-  padding-bottom: 40px;
 }
 
 /*Resultado Fim*/
