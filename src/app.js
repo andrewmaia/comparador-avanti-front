@@ -6,6 +6,7 @@ const backendDefaultUrl =
   "https://w522vlbyp4.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
+const h2Resultado = document.getElementById("h2Resultado");
 const secResultado = document.getElementById("secResultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
@@ -136,14 +137,32 @@ function mostrarComparacao() {
   planosComparacao.forEach((plano, index) => {
     planosHtml =
       planosHtml +
-      `<li ${index == 0 ? "class=planoDestacado" : ""}>
-        <article>
+      `<li >
+        <article class="planoComparado">
+          ${
+            index == 0
+              ? `<div class="ribbon"><span>MENOR CUSTO</span></div>`
+              : ``
+          }
           <h3>${plano.planoNome}</h3>
           <h4>Você gastaria: ${formatarDinheiro(plano.valorTotal)}</h4>
+          <div>
+            <h5>Quantidade Mensalidades: ${
+              plano.quantidadeMesesPeriodo
+            }</h5>          
+            <h5>Total Mensalidades: ${formatarDinheiro(
+              plano.valorMensalidadesPeriodo
+            )}</h5>
+            <h5>Total Ingressos: ${formatarDinheiro(
+              plano.valorTotalIngressos
+            )}</h5>            
+          <div>
         </article>
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
+  h2Resultado.classList.remove("naoAparecer");
+  h2Resultado.classList.add("aparecer");
   secResultado.classList.remove("naoAparecer");
   secResultado.classList.add("aparecer");
 }

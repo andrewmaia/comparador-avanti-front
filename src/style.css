@@ -82,23 +82,60 @@ ul {
 /*Resultado Inicio*/
 
 .naoAparecer {
-  display: none;
   opacity: 0;
 }
 
 .aparecer {
-  display: block;
   opacity: 1;
   transition: all 2.5s linear;
 }
 
 #secResultado {
-  padding-bottom: 40px;
-}
-
-#secResultado nav {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
+}
+
+.planoComparado {
+  text-align: left;
+  padding: 10px 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0px;
+  position: relative;
+}
+
+@media screen and (max-width: 1100px) {
+  .planoComparado {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.ribbon {
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+  left: -10px;
+  width: 114px;
+  height: 112px;
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 160px;
+  padding: 10px 0;
+  background-color: rgb(81, 132, 30);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-align: center;
+  left: -35px;
+  top: 25px;
+  transform: rotate(-45deg);
 }
 
 /*Resultado Fim*/
