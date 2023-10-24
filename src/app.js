@@ -66,7 +66,9 @@ function mostrarJogos() {
       `<li class="jogo">
       <article>
         <h3>Palmeiras x ${jogo.adversario}</h3>
-        <h4>${new Date(jogo.dataJogo).toLocaleDateString()}</h4>
+        <h4>${new Date(jogo.dataJogo).toLocaleDateString("pt-BR", {
+          timeZone: "UTC",
+        })}</h4>
         <label for="setor">Setor:</>
         <select id="jogo_${jogo.id}" name="${jogo.id}">
           <option value="">Não fui</option>        
