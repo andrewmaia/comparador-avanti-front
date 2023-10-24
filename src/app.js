@@ -3,7 +3,7 @@
 "use strict";
 
 const backendDefaultUrl =
-  "https://w522vlbyp4.execute-api.us-east-1.amazonaws.com/Prod";
+  "https://nreq2pfx04.execute-api.us-east-1.amazonaws.com/Prod";
 
 // Selectors
 const h2Resultado = document.getElementById("h2Resultado");
