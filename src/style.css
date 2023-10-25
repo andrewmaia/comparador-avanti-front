@@ -77,11 +77,7 @@ ul {
   text-align: left;
 }
 
-.maisJogos {
-  padding: 20px 11px;
-}
-
-.maisJogos a {
+#btnCarregarMaisJogos {
   color: white;
 }
 

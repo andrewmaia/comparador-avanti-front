@@ -11,12 +11,11 @@ const secResultado = document.getElementById("secResultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
 const ulJogos = document.getElementById("ulJogos");
-
-let podeCarregarMaisJogo,
-  adicionouBotaoCarregarMaisJogos = false,
-  jogoLastEvaluatedKey;
+const btnCarregarMaisJogos = document.getElementById("btnCarregarMaisJogos");
+let jogoLastEvaluatedKey;
 
 // Event Listeners
+btnCarregarMaisJogos.addEventListener("click", carregarJogos);
 btnComparar.addEventListener("click", comparar);
 window.addEventListener("load", carregarPlanos);
 window.addEventListener("load", carregarJogos);
@@ -106,32 +105,11 @@ function montarSelectJogo(jogo) {
         </option>          
       </select>        
     </article>`;
-
-  if (adicionouBotaoCarregarMaisJogos)
-    ulJogos.insertBefore(li, ulJogos.lastChild);
-  else ulJogos.appendChild(li);
+  ulJogos.appendChild(li);
 }
 function exibirBotaoCarregarMaisJogos() {
-  podeCarregarMaisJogo = jogoLastEvaluatedKey !== undefined;
-  if (podeCarregarMaisJogo) {
-    if (!adicionouBotaoCarregarMaisJogos) {
-      adicionouBotaoCarregarMaisJogos = true;
-      const li = document.createElement("li");
-      li.setAttribute("class", "maisJogos");
-      const article = document.createElement("article");
-      const h3 = document.createElement("h3");
-      const aMaisJogos = document.createElement("a");
-      aMaisJogos.innerText = "Carregar mais";
-      aMaisJogos.addEventListener("click", carregarJogos);
-      h3.appendChild(aMaisJogos);
-      article.appendChild(h3);
-      li.appendChild(article);
-      ulJogos.appendChild(li);
-    }
-  } else {
-    const li = document.getElementsByClassName("maisJogos")[0];
-    li.remove();
-  }
+  let podeCarregarMaisJogo = jogoLastEvaluatedKey !== undefined;
+  btnCarregarMaisJogos.style.display = podeCarregarMaisJogo ? "inline" : "none";
 }
 
 function carregarRodape() {
