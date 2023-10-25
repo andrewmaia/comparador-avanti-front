@@ -110,6 +110,7 @@ function montarSelectJogo(jogo) {
 function exibirBotaoCarregarMaisJogos() {
   let podeCarregarMaisJogo = jogoLastEvaluatedKey !== undefined;
   btnCarregarMaisJogos.style.display = podeCarregarMaisJogo ? "inline" : "none";
+  if (!podeCarregarMaisJogo) alert("Não há mais jogos para carregar!");
 }
 
 function carregarRodape() {
@@ -190,6 +191,7 @@ function preSelecionado(jogoId, setor) {
   }
   return "";
 }
+// eslint-disable-next-line no-unused-vars
 function salvarSetor(select) {
   localStorage.setItem(select.name, select.value);
 }
