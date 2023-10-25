@@ -77,6 +77,14 @@ ul {
   text-align: left;
 }
 
+.maisJogos {
+  padding: 20px 11px;
+}
+
+.maisJogos a {
+  color: white;
+}
+
 /*Jogos Fim*/
 
 /*Resultado Inicio*/
