@@ -79,11 +79,13 @@ O código como infra gerado em codepipeline.yaml ira gerar uma pipeline com os s
 
 **Estágio 2 - Atualização da Pipeline:** É neste estágio que ocorre a **auto-atualização da pipeline**. Aqui são executadas ações que irão pegar o conteudo do arquivo **codepipeline.yaml**  e republicar a stack que gera a pipeline. Assim qualquer alteração nesse arquivo resultará numa auto-atualização da pipeline.
 
-**Estágio 3 -Criar Bucket Front:** Neste estágio é criado o bucket onde é armezenado o site do front através do arquivo **buildspec_build_package.yml** da pasta pipeline.
+**Estágio 3 -Rodar Eslint:** Neste estágio é executado eslint para procurar erros nos arquivos javascript  através do arquivo **buildspec_eslint.yml** da pasta pipeline.
 
-**Estágio 4 - Obter Arquivos Front:** Neste estágio é selecionado apenas os arquivos da pasta src do repositório para publicar o site do front através do arquivo **buildspec_copiar_arquivos_front.yml.yml** da pasta pipeline.
+**Estágio 4 -Criar Bucket Front:** Neste estágio é criado o bucket onde é armezenado o site do front através do arquivo **buildspec_build_package.yml** da pasta pipeline.
 
-**Estágio 5 - CopiarArquivosParaBucket:** Neste estágio é copiado os arquivos do site do front no bucket.
+**Estágio 5 - Obter Arquivos Front:** Neste estágio é executado o webpack e selecionado os arquivos da pasta dist para publicar o site do front através do arquivo **buildspec_copiar_arquivos_front.yml** da pasta pipeline.
+
+**Estágio 6 - CopiarArquivosParaBucket:** Neste estágio é copiado os arquivos do site do front no bucket.
 
 
 
