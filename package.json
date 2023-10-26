@@ -4,7 +4,8 @@
   "description": "Todo o passo a passo abaixo já foi realizado. Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/andrewmaia/comparador-avanti-front#readme",
   "devDependencies": {
-    "eslint": "^8.51.0"
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.51.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
