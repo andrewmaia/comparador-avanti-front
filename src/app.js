@@ -75,9 +75,9 @@ function montarSelectJogo(jogo) {
       <h4>${new Date(jogo.dataJogo).toLocaleDateString("pt-BR", {
         timeZone: "UTC",
       })}</h4>
-      <label for="setor">Setor:</>
+      <label for="jogo_${jogo.id}">Setor:</>
       <select id="jogo_${jogo.id}" name="${jogo.id}"
-        onchange="salvarSetor(this)">
+        onchange="localStorage.setItem(this.name, this.value)">
         <option value="">Não fui</option>        
         <option value="sn" ${preSelecionado(jogo.id, "sn")}>
           Superior Norte: ${formatarDinheiro(jogo.superiorNorteValor)}
@@ -190,8 +190,4 @@ function preSelecionado(jogoId, setor) {
     return "selected";
   }
   return "";
-}
-// eslint-disable-next-line no-unused-vars
-function salvarSetor(select) {
-  localStorage.setItem(select.name, select.value);
 }
