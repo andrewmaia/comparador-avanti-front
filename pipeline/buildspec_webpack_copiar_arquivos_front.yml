@@ -15,7 +15,7 @@ phases:
       - npm install
       - npm run build
       - mv dist/* ./
-      - rm -R src pipeline node_modules webpack.config.js .eslintrc.json *.md *.yaml *.toml *.sh .gitignore
+      - rm -R src pipeline node_modules webpack.config.js .eslintrc.json package-lock.json package-lock.json *.md *.yaml *.toml *.sh .gitignore
   post_build:
     commands:
       - echo Build completed

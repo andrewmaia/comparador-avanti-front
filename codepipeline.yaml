@@ -366,9 +366,9 @@ Resources:
               OutputArtifacts:
                 - Name: BuildArtifactAsZip
 
-        - Name: ObterArquivosFront
+        - Name: RodarWebpackObterArquivosFront
           Actions:
-            - Name: ObterArquivos
+            - Name: RodarWebpackObterArquivos
               ActionTypeId:
                 Category: Build
                 Owner: AWS
@@ -679,7 +679,7 @@ Resources:
       ServiceRole: !GetAtt CodeBuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
-        BuildSpec: pipeline/buildspec_copiar_arquivos_front.yml        
+        BuildSpec: pipeline/buildspec_webpack_copiar_arquivos_front.yml
 Outputs:
   CodeStarConnectionArn:
     Condition: CreateConnection
