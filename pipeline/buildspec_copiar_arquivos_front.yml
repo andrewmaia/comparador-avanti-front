@@ -1,3 +1,5 @@
+# @format
+
 version: 0.2
 
 phases:
@@ -10,11 +12,13 @@ phases:
   build:
     commands:
       - echo Build started
-      - mv src/* ./      
-      - rm -R src pipeline *.yaml *.toml *.sh .gitignore       
+      - npm install
+      - npm run build
+      - mv dist/* ./
+      - rm -R src pipeline *.yaml *.toml *.sh .gitignore
   post_build:
     commands:
-      - echo Build completed      
+      - echo Build completed
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
