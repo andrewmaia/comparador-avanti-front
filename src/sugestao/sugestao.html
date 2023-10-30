@@ -1,0 +1,46 @@
+<!-- @format -->
+
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Comparador Avanti</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <h1>Comparador Avanti</h1>
+      </header>
+      <!-- Hero -->
+      <section class="hero">
+        <h3>
+          Encontrou algum problema ou tem alguma sugestão a fazer. Preencha o
+          formulário abaixo e clique em enviar.
+        </h3>
+      </section>
+      <!-- Content -->
+      <section class="content">
+        <form>
+          <p>
+            <label for="txtEmail">Email</label>
+            <input id="txtEmail" type="email" />
+          </p>
+          <p>
+            <label for="txtSugestao">Sugestão</label>
+            <textarea id="txtSugestao"></textarea>
+          </p>
+          <button id="btnEnviar" type="button">Enviar</button>
+          <div id="divMensagem" style="display: none">
+            Sugestão enviada com sucesso!
+          </div>
+        </form>
+      </section>
+      <footer class="footer">
+        <strong>Desenvolvido por Andrew Maia - ano</strong>
+      </footer>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

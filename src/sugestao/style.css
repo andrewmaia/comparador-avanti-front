@@ -1,0 +1,48 @@
+/** @format */
+
+main,
+header,
+section,
+aside,
+footer {
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  font-size: 1.5rem;
+}
+
+body {
+  background-image: url("../images/bg-planos.jpg");
+  color: white;
+  font-family: sans-serif;
+}
+
+button {
+  background-color: rgb(81, 132, 30);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 3px;
+  margin-top: 30px;
+}
+
+.header {
+  text-align: center;
+}
+
+.hero {
+  text-align: center;
+}
+
+.content {
+  flex: 1;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+}
