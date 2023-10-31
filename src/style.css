@@ -6,7 +6,7 @@ section,
 aside,
 footer {
   margin: 0;
-  padding: 20px;
+  padding: 10px;
 }
 
 header {
@@ -87,6 +87,8 @@ ul {
 
 .naoAparecer {
   opacity: 0;
+  padding: 0;
+  height: 0;
 }
 
 .aparecer {

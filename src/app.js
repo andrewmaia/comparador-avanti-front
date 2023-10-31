@@ -7,6 +7,7 @@ const backendDefaultUrl =
 
 // Selectors
 const h2Resultado = document.getElementById("h2Resultado");
+const txtObsResultado = document.getElementById("txtObsResultado");
 const secResultado = document.getElementById("secResultado");
 const btnComparar = document.getElementById("btnComparar");
 const rodape = document.getElementsByTagName("footer")[0];
@@ -173,8 +174,8 @@ function mostrarComparacao() {
       </li>`;
   });
   document.getElementById("ulPlanosComparacao").innerHTML = planosHtml;
-  h2Resultado.classList.remove("naoAparecer");
-  h2Resultado.classList.add("aparecer");
+  h2Resultado.style.display = "block";
+  txtObsResultado.style.display = "block";
   secResultado.classList.remove("naoAparecer");
   secResultado.classList.add("aparecer");
 }
