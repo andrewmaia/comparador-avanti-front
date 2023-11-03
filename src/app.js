@@ -158,13 +158,11 @@ function mostrarComparacao() {
               : ``
           }
           <h3>${plano.planoNome}</h3>
-          <h4>Você gastaria: ${plano.valorTotal}</h4>
+          <h4>Você gastaria: ${formatarDinheiro(plano.valorTotal)}</h4>
           <div>
-            <h5>Quantidade Mensalidades: ${
-              plano.quantidadeMesesPeriodo
-            }</h5>          
-            <h5>Total Mensalidades: ${ plano.valorMensalidadesPeriodo}</h5>
-            <h5>Total Ingressos: ${plano.valorTotalIngressos}</h5>            
+            <h5>Quantidade Mensalidades: ${plano.quantidadeMesesPeriodo}</h5>          
+            <h5>Total Mensalidades: ${formatarDinheiro(plano.valorMensalidadesPeriodo)}</h5>
+            <h5>Total Ingressos: ${formatarDinheiro(plano.valorTotalIngressos)}</h5>                   
           <div>
         </article>
       </li>`;
