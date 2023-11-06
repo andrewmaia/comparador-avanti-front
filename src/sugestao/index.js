@@ -15,8 +15,8 @@ btnEnviar.addEventListener("click", enviar);
 function enviar(event) {
   event.preventDefault(); //Nao faz subimit
 
-  if (txtEmail.value === "") {
-    alert("É necessário fornecer um email!");
+  if (!validarEmail(txtEmail.value)) {
+    alert("Forneça um email válido!");
     return;
   }
 
@@ -34,4 +34,11 @@ function enviar(event) {
 function retornoEnvio() {
   btnEnviar.style.display = "none";
   divMensagem.style.display = "block";
+}
+
+function validarEmail(email) {
+  const pattern =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  return pattern.test(email);
 }
