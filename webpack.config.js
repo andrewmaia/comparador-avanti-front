@@ -23,6 +23,7 @@ module.exports = {
         { from: "src/common.css" },
         { from: "src/const.js" },
         { from: "src/sugestao/index.html", to: "sugestao/" },
+        { from: "src/sugestao/index.css", to: "sugestao/" },
         { from: "src/images/bg-planos.jpg", to: "images/" },
         { from: "src/images/logo-palmeiras.png", to: "images/" },
       ],
