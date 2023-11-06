@@ -2,12 +2,6 @@
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
 "use strict";
 
-<<<<<<< HEAD:src/index.js
-=======
-const backendDefaultUrl =
-  "https://hvjf7fwawc.execute-api.us-east-1.amazonaws.com/Prod";
-
->>>>>>> ff3cdbf2112e6955aa37c276cf775b964258b0f6:src/app.js
 // Selectors
 const h2Resultado = document.getElementById("h2Resultado");
 const txtObsResultado = document.getElementById("txtObsResultado");
@@ -159,9 +153,15 @@ function mostrarComparacao() {
           <h3>${plano.planoNome}</h3>
           <h4>Você gastaria: ${formatarDinheiro(plano.valorTotal)}</h4>
           <div>
-            <h5>Quantidade Mensalidades: ${plano.quantidadeMesesPeriodo}</h5>          
-            <h5>Total Mensalidades: ${formatarDinheiro(plano.valorMensalidadesPeriodo)}</h5>
-            <h5>Total Ingressos: ${formatarDinheiro(plano.valorTotalIngressos)}</h5>                   
+            <h5>Quantidade Mensalidades: ${
+              plano.quantidadeMesesPeriodo
+            }</h5>          
+            <h5>Total Mensalidades: ${formatarDinheiro(
+              plano.valorMensalidadesPeriodo
+            )}</h5>
+            <h5>Total Ingressos: ${formatarDinheiro(
+              plano.valorTotalIngressos
+            )}</h5>            
           <div>
         </article>
       </li>`;
