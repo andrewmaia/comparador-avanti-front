@@ -2,15 +2,11 @@
 //https://plainenglish.io/blog/the-basic-vanilla-js-project-setup-9290dce6403f
 "use strict";
 
-const backendDefaultUrl =
-  "https://u6eg4rdyo4.execute-api.us-east-1.amazonaws.com/Prod";
-
 // Selectors
 const h2Resultado = document.getElementById("h2Resultado");
 const txtObsResultado = document.getElementById("txtObsResultado");
 const secResultado = document.getElementById("secResultado");
 const btnComparar = document.getElementById("btnComparar");
-const rodape = document.getElementsByTagName("footer")[0];
 const ulJogos = document.getElementById("ulJogos");
 const btnCarregarMaisJogos = document.getElementById("btnCarregarMaisJogos");
 let jogoLastEvaluatedKey;
@@ -20,13 +16,13 @@ btnCarregarMaisJogos.addEventListener("click", carregarJogos);
 btnComparar.addEventListener("click", comparar);
 window.addEventListener("load", carregarPlanos);
 window.addEventListener("load", carregarJogos);
-window.addEventListener("load", carregarRodape);
 
 // Functions
 function carregarPlanos() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarPlanos;
 
+  // eslint-disable-next-line no-undef
   xhttp.open("GET", `${backendDefaultUrl}/planos`);
   xhttp.send();
 }
@@ -56,7 +52,7 @@ function mostrarPlanos() {
 function carregarJogos() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarJogos;
-
+  // eslint-disable-next-line no-undef
   xhttp.open("POST", `${backendDefaultUrl}/jogos`);
   xhttp.send(JSON.stringify(jogoLastEvaluatedKey));
 }
@@ -114,10 +110,6 @@ function exibirBotaoCarregarMaisJogos() {
   if (!podeCarregarMaisJogo) alert("Não há mais jogos para carregar!");
 }
 
-function carregarRodape() {
-  rodape.innerHTML = rodape.innerHTML.replace("ano", new Date().getFullYear());
-}
-
 function comparar(event) {
   event.preventDefault(); //Nao faz subimit
   let jogos = "";
@@ -137,6 +129,7 @@ function comparar(event) {
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = mostrarComparacao;
+  // eslint-disable-next-line no-undef
   xhttp.open("POST", `${backendDefaultUrl}/comparar`);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send(jogos);
