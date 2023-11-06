@@ -20,7 +20,7 @@ function enviar(event) {
     return;
   }
 
-  if (txtSugestao.value === "") {
+  if (txtSugestao.value.trim() === "") {
     alert("É necessário fornecer uma sugestão!");
     return;
   }
