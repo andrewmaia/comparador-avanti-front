@@ -1,0 +1,46 @@
+/** @format */
+
+.header {
+  text-align: center;
+}
+
+.hero {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+form {
+  width: 500px;
+}
+
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 20px;
+}
+
+textarea {
+  height: 200px;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}

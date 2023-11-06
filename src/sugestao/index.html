@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../common.css" />
+    <link rel="stylesheet" href="./index.css" />
     <title>Comparador Avanti</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   </head>
@@ -16,28 +17,34 @@
       <!-- Hero -->
       <section class="hero">
         <h3>
-          <p>Encontrou algum problema ou tem alguma sugestão a fazer.</p>
-          <p>Preencha o formulário abaixo e clique em enviar.</p>
+          <p>Encontrou algum problema ou tem alguma sugestão a fazer</p>
+          <p>Preencha o formulário abaixo e clique em enviar:</p>
         </h3>
       </section>
       <!-- Content -->
       <section class="content">
-        <form>
-          <p>
+        <form class="form">
+          <div>
             <label for="txtEmail">Email</label>
+          </div>
+          <div>
             <input id="txtEmail" type="email" />
-          </p>
-          <p>
+          </div>
+          <div>
             <label for="txtSugestao">Sugestão</label>
+          </div>
+          <div>
             <textarea id="txtSugestao"></textarea>
-          </p>
-          <button id="btnEnviar" type="button">Enviar</button>
-          <div id="divMensagem" style="display: none">
-            <p>Sugestão enviada com sucesso!</p>
-            <p>
-              <a href="../index.html">Clique aqui</a> para retornar a página
-              principal
-            </p>
+          </div>
+          <div class="center">
+            <button class="button" id="btnEnviar">Enviar</button>
+            <div id="divMensagem" style="display: none">
+              <p>Sugestão enviada com sucesso!</p>
+              <p>
+                <a href="../index.html">Clique aqui</a> para retornar a página
+                principal
+              </p>
+            </div>
           </div>
         </form>
       </section>

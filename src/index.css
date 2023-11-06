@@ -1,5 +1,22 @@
 /** @format */
 
+.header {
+  text-align: center;
+}
+
+.hero {
+  text-align: center;
+}
+
+.content {
+  flex: 1;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+}
+
 .wrapper {
   margin: auto;
   max-width: 75rem;
