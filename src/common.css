@@ -30,6 +30,10 @@ button {
   margin-top: 30px;
 }
 
+a {
+  color: white;
+}
+
 ul {
   padding: 0;
   list-style-type: none;
