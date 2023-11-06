@@ -10,4 +10,4 @@ phases:
       # trigger the unit tests here
       - echo 'Running unit tests'
       - npm install
-      - npx eslint src/app.js
+      - npx eslint src/index.js src/common.js src/const.js src/sugestao/index.js
