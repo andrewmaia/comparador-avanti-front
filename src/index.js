@@ -67,43 +67,40 @@ function mostrarJogos() {
 function montarSelectJogo(jogo) {
   const li = document.createElement("li");
   li.setAttribute("class", "jogo");
-  li.innerHTML = `<article>
+  li.innerHTML =
+    `<article>
       <h3>Palmeiras x ${jogo.adversario}</h3>
+      <h4>` +
+    (jogo.AllianzParque ? "Allianz Parque" : jogo.nomeEstadio) +
+    `</h4>
       <h4>${new Date(jogo.dataJogo).toLocaleDateString("pt-BR", {
         timeZone: "UTC",
       })}</h4>
       <label for="jogo_${jogo.id}">Setor:</>
-      <select id="jogo_${jogo.id}" name="${jogo.id}"
-        onchange="localStorage.setItem(this.name, this.value)">
-        <option value="">Não fui</option>        
-        <option value="sn" ${preSelecionado(jogo.id, "sn")}>
-          Superior Norte: ${formatarDinheiro(jogo.superiorNorteValor)}
-        </option>
-        <option value="ss" ${preSelecionado(jogo.id, "ss")}>
-          Superior Sul: ${formatarDinheiro(jogo.superiorSulValor)}
-        </option>
-        <option value="so" ${preSelecionado(jogo.id, "so")}>
-          Superior Oeste: ${formatarDinheiro(jogo.superiorOesteValor)}
-        </option>
-        <option value="sl" ${preSelecionado(jogo.id, "sl")}>
-          Superior Leste: ${formatarDinheiro(jogo.superiorLesteValor)}
-        </option>          
-        <option value="gn" ${preSelecionado(jogo.id, "gn")}>
-          Gol Norte: ${formatarDinheiro(jogo.golNorteValor)}
-        </option>
-        <option value="gs" ${preSelecionado(jogo.id, "gs")}>
-          Gol Sul: ${formatarDinheiro(jogo.golSulValor)}
-        </option>
-        <option value="cl" ${preSelecionado(jogo.id, "cl")}>
-          Central Leste: ${formatarDinheiro(jogo.centralLesteValor)}
-        </option>
-        <option value="co" ${preSelecionado(jogo.id, "co")}>
-          Central Oeste: ${formatarDinheiro(jogo.centralOesteValor)}
-        </option>          
-      </select>        
+        <select id="jogo_${jogo.id}" name="${jogo.id}"
+          onchange="localStorage.setItem(this.name, this.value)">` +
+    montarOptionsSelect(jogo) +
+    `</select>        
     </article>`;
   ulJogos.appendChild(li);
 }
+
+function montarOptionsSelect(jogo) {
+  let setores = `<option value="">Não fui</option>`;
+  jogo.setores.forEach((setor) => {
+    setores =
+      setores +
+      `<option value="${setor.setorNome}"  ${preSelecionado(
+        jogo.id,
+        setor.setorNome
+      )}>
+        ${setor.setorNome}: ${formatarDinheiro(setor.valorIngresso)}
+      </option>`;
+  });
+
+  return setores;
+}
+
 function exibirBotaoCarregarMaisJogos() {
   let podeCarregarMaisJogo = jogoLastEvaluatedKey !== undefined;
   btnCarregarMaisJogos.style.display = podeCarregarMaisJogo ? "inline" : "none";
