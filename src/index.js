@@ -81,7 +81,7 @@ function montarSelectJogo(jogo) {
     `<article>
       <h3>Palmeiras x ${jogo.adversario}</h3>
       <h4>` +
-    (jogo.AllianzParque ? "Allianz Parque" : jogo.nomeEstadio) +
+    (jogo.allianzParque ? "Allianz Parque" : jogo.nomeEstadio) +
     `</h4>
       <h4>${new Date(jogo.dataJogo).toLocaleDateString("pt-BR", {
         timeZone: "UTC",
