@@ -71,7 +71,8 @@ function mostrarJogos() {
   const retorno = JSON.parse(this.responseText);
   retorno.Items.forEach(montarSelectJogo);
   jogoLastEvaluatedKey = retorno.LastEvaluatedKey;
-  exibirBotaoCarregarMaisJogos();
+  const carregouAoMenoUmJogo = retorno.Items.length > 0;
+  exibirBotaoCarregarMaisJogos(carregouAoMenoUmJogo);
 }
 
 function montarSelectJogo(jogo) {
@@ -111,10 +112,13 @@ function montarOptionsSelect(jogo) {
   return setores;
 }
 
-function exibirBotaoCarregarMaisJogos() {
-  let podeCarregarMaisJogo = jogoLastEvaluatedKey !== undefined;
-  btnCarregarMaisJogos.style.display = podeCarregarMaisJogo ? "inline" : "none";
-  if (!podeCarregarMaisJogo) alert("Não há mais jogos para carregar!");
+function exibirBotaoCarregarMaisJogos(carregouAoMenoUmJogo) {
+  let podeCarregarMaisJogos = jogoLastEvaluatedKey !== undefined;
+  btnCarregarMaisJogos.style.display = podeCarregarMaisJogos
+    ? "inline"
+    : "none";
+  if (!podeCarregarMaisJogos && !carregouAoMenoUmJogo)
+    alert("Não há mais jogos para carregar!");
 }
 
 function comparar(event) {
