@@ -37,16 +37,26 @@ function mostrarPlanos() {
       `<li class="plano">
       <article>
         <h3>${plano.nome}</h3>
-        <h4>${formatarDinheiro(plano.valor)}</h4>
-        <p>${plano.centralOesteDesconto}% - CENTRAL OESTE</p>
-        <p>${plano.centralLesteDesconto}% - CENTRAL LESTE</p>        
-        <p>${plano.superiorDesconto}% - SUPERIOR</p>
-        <p>${plano.golSulDesconto}% - GOL SUL</p>
-        <p>${plano.golNorteDesconto}% - GOL NORTE</p>
-      </article>
+        <h4>${formatarDinheiro(plano.valor)}</h4>` +
+      montarSetoresDescontoPlano(plano) +
+      `</article>
     </li>`;
   });
   document.getElementById("ulPlanos").innerHTML = planosHtml;
+}
+
+function montarSetoresDescontoPlano(plano) {
+  let setoresDesconto = ``;
+
+  plano.setoresDesconto.forEach((setorDesconto) => {
+    setoresDesconto =
+      setoresDesconto +
+      `<p>${
+        setorDesconto.percentualDesconto
+      }% - ${setorDesconto.setorNome.toUpperCase()}</p>`;
+  });
+
+  return setoresDesconto;
 }
 
 function carregarJogos() {
