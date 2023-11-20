@@ -88,7 +88,7 @@ function montarSelectJogo(jogo) {
         timeZone: "UTC",
       })}</h4>
       <label for="jogo_${jogo.id}">Setor:</>
-        <select id="jogo_${jogo.id}" name="${jogo.id}"
+        <select id="jogo_${jogo.id}" name="${jogo.id}" class="jogoSelect"
           onchange="localStorage.setItem(this.name, this.value)">` +
     montarOptionsSelect(jogo) +
     `</select>        
