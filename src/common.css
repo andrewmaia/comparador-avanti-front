@@ -13,6 +13,10 @@ header {
   font-size: 1.5rem;
 }
 
+header a {
+  text-decoration: none;
+}
+
 body {
   background-image: url("images/bg-planos.jpg");
   color: white;
