@@ -48,6 +48,10 @@
   .sidebar {
     display: none;
   }
+
+  .jogo {
+    width: 270px;
+  }
 }
 
 .jogo {
