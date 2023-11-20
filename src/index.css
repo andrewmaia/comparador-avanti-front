@@ -48,15 +48,12 @@
   .sidebar {
     display: none;
   }
-
-  .jogo {
-    width: 270px;
-  }
 }
 
 .jogo {
   padding: 20px 11px;
   text-align: left;
+  width: 250px;
 }
 .jogoSelect {
   width: 183px;
