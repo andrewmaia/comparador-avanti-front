@@ -44,3 +44,8 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
+
+.validator {
+  color: red;
+  margin-bottom: 5px;
+}

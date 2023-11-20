@@ -7,23 +7,36 @@ const txtEmail = document.getElementById("txtEmail");
 const txtSugestao = document.getElementById("txtSugestao");
 const btnEnviar = document.getElementById("btnEnviar");
 const divMensagem = document.getElementById("divMensagem");
+const divValidacaoEmail = document.getElementById("divValidacaoEmail");
+const divValidacaoSugestao = document.getElementById("divValidacaoSugestao");
 
 // Event Listeners
+txtEmail.addEventListener("change", txtEmail_onChange);
+txtSugestao.addEventListener("change", txtSugestao_onChange);
 btnEnviar.addEventListener("click", enviar);
 
 // Functions
+function txtEmail_onChange(event) {
+  validarEmail(event.target.value);
+}
+
+function txtSugestao_onChange(event) {
+  validarSugestao(event.target.value);
+}
+
 function enviar(event) {
+  let valido = true;
   event.preventDefault(); //Nao faz subimit
 
   if (!validarEmail(txtEmail.value)) {
-    alert("Forneça um email válido!");
-    return;
+    valido = false;
   }
 
-  if (txtSugestao.value.trim() === "") {
-    alert("É necessário fornecer uma sugestão!");
-    return;
+  if (!validarSugestao(txtSugestao.value)) {
+    valido = false;
   }
+
+  if (!valido) return;
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = retornoEnvio;
@@ -32,6 +45,8 @@ function enviar(event) {
   xhttp.send("Mensagem: " + txtSugestao.value + ". Email: " + txtEmail.value);
 }
 function retornoEnvio() {
+  txtEmail.value = "";
+  txtSugestao.value = "";
   btnEnviar.style.display = "none";
   divMensagem.style.display = "block";
 }
@@ -40,5 +55,23 @@ function validarEmail(email) {
   const pattern =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 
-  return pattern.test(email);
+  let valido = pattern.test(email);
+  if (valido) {
+    divValidacaoEmail.style.display = "none";
+  } else {
+    divValidacaoEmail.style.display = "block";
+  }
+
+  return valido;
+}
+
+function validarSugestao(sugestao) {
+  let valido = sugestao.trim() !== "";
+  if (valido) {
+    divValidacaoSugestao.style.display = "none";
+  } else {
+    divValidacaoSugestao.style.display = "block";
+  }
+
+  return valido;
 }

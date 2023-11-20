@@ -44,6 +44,10 @@
   #ulJogos {
     justify-content: center;
   }
+
+  .sidebar {
+    display: none;
+  }
 }
 
 .jogo {
