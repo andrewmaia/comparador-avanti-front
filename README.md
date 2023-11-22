@@ -2,13 +2,20 @@
 
 ## Intruções para fazer o deploy deste projeto em uma conta AWS
 
-Todo o passo a passo abaixo já foi realizado. Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:
+Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:
 
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
+Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline do projeto estará criada.
 
-Importante: A primeira vez que a pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+**Passos a serem feitos na primeira vez que rodar a pipeline:**
+
+
+Na primeira vez que pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+
+
+
 
 ## Infra como código
 
@@ -83,7 +90,7 @@ O código como infra gerado em codepipeline.yaml ira gerar uma pipeline com os s
 
 **Estágio 3 -Rodar Eslint:** Neste estágio é executado eslint para procurar erros nos arquivos javascript através do arquivo **buildspec_eslint.yml** da pasta pipeline.
 
-**Estágio 4 -Criar Bucket Front:** Neste estágio é criado o bucket onde é armezenado o site do front através do arquivo **buildspec_build_package.yml** da pasta pipeline.
+**Estágio 4 -Criar Bucket Front DNS e Distribuição:** Neste estágio é criado o bucket onde é armezenado o site do front, a zona hospedada no Route 53, Certificado SSL e uma distribuição no CloudFront através do arquivo **buildspec_build_package.yml** da pasta pipeline.
 
 **Estágio 5 - Rodar Webpack e Obter Arquivos Front:** Neste estágio é executado o webpack e selecionado os arquivos da pasta dist para publicar o site do front através do arquivo **buildspec_webpack_copiar_arquivos_front.yml** da pasta pipeline.
 
