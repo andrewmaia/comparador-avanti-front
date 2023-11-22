@@ -17,7 +17,9 @@ Depois que a pilha comparador-avanti-front-pipeline for finalizada, a pipeline d
 
 ![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
 
--Acesse o Route 53  e encontre a zona hospedada do comparador avanti:
+Siga os passos abaixo para finalizar a validação do certificado.
+
+Acesse o Route 53  e encontre a zona hospedada do comparador avanti:
 
 ![Screenshot_9](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c8851df6-f21c-43e8-a427-b0efbe31da5e)
 
