@@ -7,15 +7,24 @@ Para fazer deploy deste projeto basta configurar as credencias do AWS através d
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
-Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline do projeto estará criada.
+Depois que a pilha comparador-avanti-front-pipeline for finalizada, a pipeline do projeto estará criada.
 
 **Passos a serem feitos na primeira vez que rodar a pipeline:**
 
 1) O estágio "DeteccaoAlteracoesRepositorio" irá falhar caso tenha sido tenha utilizada uma nova conexão com o github. Para corrigir isso basta editar a ação "SourceCodeRepo" e configurar a conexão com o github.
 
-2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente. Para isso siga os seguintes passos:
+2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "comparador-avanti-front-prod" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente:
 
-   ![Screenshot_3](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/bc59d369-5c3a-4676-867f-b7983563bd78)
+![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
+
+   
+
+  
+4) Para isso siga os seguintes passos:
+
+   - 
+
+   
 
 
 
