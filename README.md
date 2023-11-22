@@ -42,6 +42,27 @@ Esse registro irá fazer a validação do certificado. A AWS demora alguns minut
 
 ![Screenshot_1](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/b5ea9ccd-433b-43ca-85d6-82f90aa7f534)
 
+Depois que a validação é finalizada a pilha "comparador-avanti-front-prod" continua e a pipeline é finalizada.
+
+3) Depois de finalizada a pipeline é necessário criar o registro no Route 53 que irá apontar para a distribuição do cloud front
+
+Acesse a zona hospedada "comparadoravanti.com.br" no Route 53 novamente
+
+![Screenshot_2](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/351eeb1e-6849-4131-9239-41e95a5be3cb)
+
+Clique em criar registro
+
+![Screenshot_3](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/223e58a1-e487-47a6-bbef-f4955eea07af)
+
+Selecione a distribuição do Cloud Front conforme a imagem abaixo e clique em "Criar Registro"
+
+![Screenshot_4](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/bbb64c2b-3e82-42bf-97c3-6c04747a933f)
+
+![Screenshot_5](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/afdc1d79-9e8d-4325-b877-ef690bfd52cd)
+
+Um novo registro é criado e o domínio agora está conectado a distribuição no CloudFront
+
+![Screenshot_15](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/f7c90f31-1e1b-4974-891c-ccf71578251d)
 
 
 
