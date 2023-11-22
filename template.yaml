@@ -1,28 +1,66 @@
-AWSTemplateFormatVersion: '2010-09-09'
+# @format
+
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   comparador-avanti-front
 
   Sample SAM Template for comparador-avanti-front
-  
 
 Resources:
   WebSiteBucket:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: comparador-avanti-front
-      PublicAccessBlockConfiguration:      
+      PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
         IgnorePublicAcls: false
         RestrictPublicBuckets: false
       OwnershipControls:
         Rules:
-        - ObjectOwnership: BucketOwnerPreferred        
+          - ObjectOwnership: BucketOwnerPreferred
       AccessControl: AwsExecRead
       WebsiteConfiguration:
         IndexDocument: index.html
-        
+
+  WebSiteHostedZone:
+    Type: "AWS::Route53::HostedZone"
+    Properties:
+      Name: "comparadoravanti.com.br"
+
+  WebSiteCertificate:
+    Type: "AWS::CertificateManager::Certificate"
+    Properties:
+      DomainName: "*.comparadoravanti.com.br"
+      ValidationMethod: DNS
+
+  WebSiteDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Origins:
+          - DomainName: !GetAtt WebSiteBucket.DomainName
+            Id: !GetAtt WebSiteBucket.DomainName
+            CustomOriginConfig:
+              OriginProtocolPolicy: "http-only"
+              OriginSSLProtocols:
+                - "TLSv1.2"
+        DefaultCacheBehavior:
+          Compress: true
+          TargetOriginId: !GetAtt WebSiteBucket.DomainName
+          ViewerProtocolPolicy: "redirect-to-https"
+          CachePolicyId: "658327ea-f89d-4fab-a63d-7e88639e58f6"
+        Aliases:
+          - "www.comparadoravanti.com.br"
+        ViewerCertificate:
+          AcmCertificateArn: !Ref WebSiteCertificate
+          MinimumProtocolVersion: "TLSv1.2_2021"
+          SslSupportMethod: "sni-only"
+        DefaultRootObject: "index.html"
+        HttpVersion: "http2and3"
+
 Outputs:
   WebsiteURL:
     Value: !GetAtt
@@ -31,8 +69,8 @@ Outputs:
     Description: URL for website hosted on S3
   S3BucketSecureURL:
     Value: !Join
-      - ''
-      - - 'https://'
+      - ""
+      - - "https://"
         - !GetAtt
           - WebSiteBucket
           - DomainName
