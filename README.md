@@ -23,7 +23,7 @@ Acesse o Route 53  e encontre a zona hospedada do comparador avanti criada pela 
 
 ![Screenshot_9](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c8851df6-f21c-43e8-a427-b0efbe31da5e)
 
-Copie duas DNS's do registro do tipo NS e aponte o dominio comparadoravanti.com.br no provedor onde foi comprado (no caso registro BR) para esses dois endereços.
+Copie duas DNS's do registro do tipo NS e aponte o dominio comparadoravanti.com.br no provedor onde foi comprado (no caso registro BR) para esses dois endereços
 
 ![Screenshot_10](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/9af4a983-aacf-4263-91cd-903ce821bac6)
 
@@ -44,7 +44,7 @@ Esse registro irá fazer a validação do certificado. A AWS demora alguns minut
 
 Depois que a validação é finalizada a pilha "comparador-avanti-front-prod" continua e a pipeline é finalizada.
 
-3) Depois de finalizada a pipeline é necessário criar o registro no Route 53 que irá apontar para a distribuição do cloud front
+3) Depois de finalizada a pipeline é necessário criar o registro no Route 53 que irá apontar para a distribuição do Cloudfront criado pela pilha "comparador-avanti-front-prod"
 
 Acesse a zona hospedada "comparadoravanti.com.br" no Route 53 novamente
 
@@ -54,7 +54,7 @@ Clique em criar registro
 
 ![Screenshot_3](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/223e58a1-e487-47a6-bbef-f4955eea07af)
 
-Selecione a distribuição do Cloud Front conforme a imagem abaixo e clique em "Criar Registro"
+Selecione a distribuição do CloudFront conforme a imagem abaixo e clique em "Criar Registro"
 
 ![Screenshot_4](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/bbb64c2b-3e82-42bf-97c3-6c04747a933f)
 
