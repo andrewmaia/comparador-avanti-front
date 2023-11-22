@@ -11,8 +11,11 @@ Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline 
 
 **Passos a serem feitos na primeira vez que rodar a pipeline:**
 
+1) O estágio "DeteccaoAlteracoesRepositorio" irá falhar caso tenha sido tenha utilizada uma nova conexão com o github. Para corrigir isso basta editar a ação "SourceCodeRepo" e configurar a conexão com o github.
 
-Na primeira vez que pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente. Para isso siga os seguintes passos:
+
+   
 
 
 
