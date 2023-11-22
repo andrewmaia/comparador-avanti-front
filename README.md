@@ -23,7 +23,7 @@ Acesse o Route 53  e encontre a zona hospedada do comparador avanti criada pela 
 
 ![Screenshot_9](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c8851df6-f21c-43e8-a427-b0efbe31da5e)
 
-Copie duas DNS's do registro do tipo NS e utilize-as no provedor onde foi comprado o DNS (no caso registro BR)
+Copie duas DNS's do registro do tipo NS e aponte o dominio comparadoravanti.com.br no provedor onde foi comprado (no caso registro BR) para esses dois endereços.
 
 ![Screenshot_10](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/9af4a983-aacf-4263-91cd-903ce821bac6)
 
