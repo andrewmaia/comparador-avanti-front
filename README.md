@@ -15,7 +15,8 @@ Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline 
 
 2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente. Para isso siga os seguintes passos:
 
-   
+   ![Screenshot_3](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/bc59d369-5c3a-4676-867f-b7983563bd78)
+
 
 
 
