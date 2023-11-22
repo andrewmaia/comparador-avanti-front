@@ -7,7 +7,7 @@ Para fazer deploy deste projeto basta configurar as credencias do AWS através d
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
-A pipeline do projeto será criada.
+Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline do projeto estará criada.
 
 **Passos a serem feitos na primeira vez que rodar a pipeline:**
 
