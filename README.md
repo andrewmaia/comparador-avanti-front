@@ -2,13 +2,20 @@
 
 ## Intruções para fazer o deploy deste projeto em uma conta AWS
 
-Todo o passo a passo abaixo já foi realizado. Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:
+Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:
 
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
+A pipeline do projeto será criada.
 
-Importante: A primeira vez que a pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+**Passos a serem feitos na primeira vez que rodar a pipeline**
+
+
+Na primeira vez que pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+
+
+
 
 ## Infra como código
 
