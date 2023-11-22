@@ -11,15 +11,15 @@ Depois que a pilha comparador-avanti-front-pipeline for finalizada, a pipeline d
 
 **Passos a serem feitos na primeira vez que rodar a pipeline:**
 
-1) O estágio "DeteccaoAlteracoesRepositorio" irá falhar caso tenha sido tenha utilizada uma nova conexão com o github. Para corrigir isso basta editar a ação "SourceCodeRepo" e configurar a conexão com o github.
+1) O estágio "DeteccaoAlteracoesRepositorio" irá falhar caso tenha sido utilizada uma nova conexão com o github. Para corrigir isso basta editar a ação "SourceCodeRepo" e configurar a conexão com o github.
 
-2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "comparador-avanti-front-prod" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente:
+2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "comparador-avanti-front-prod" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente (a própria pilha cria esse certificado):
 
 ![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
 
 Siga os passos abaixo para finalizar a validação do certificado.
 
-Acesse o Route 53  e encontre a zona hospedada do comparador avanti:
+Acesse o Route 53  e encontre a zona hospedada do comparador avanti criada pela pilha "comparador-avanti-front-prod":
 
 ![Screenshot_9](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c8851df6-f21c-43e8-a427-b0efbe31da5e)
 
