@@ -115,6 +115,8 @@ Depois de feito o deploy e criada a stack de recursos do front é possível excl
 sam delete
 ```
 
+Importante: Devido as configurações manuais feitas no recurso zona hospedada "comparadoravanti.com.br" é necessário excluir os registros do mesmo para que o comando acima consiga excluir a pilha.
+
 ## Deploy automático de infra e código através de Pipeline
 
 Neste projeto o arquivo **codepipeline.yaml** e os arquivos da pasta pipeline foram criados manualmente (sem o comando sam pipeline init --bootstrap).
