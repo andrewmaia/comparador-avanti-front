@@ -38,6 +38,10 @@ E clique em "Criar registro no Route 53"
 
 ![Screenshot_14](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c2376d3a-bcfd-4088-861f-4271c5c6164c)
 
+Esse registro irá fazer a validação do certificado. A AWS demora alguns minutos para fazer essa validação. Quando a validação estiver ok o status do certificado irá ficar como a seguir:
+
+![Screenshot_1](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/b5ea9ccd-433b-43ca-85d6-82f90aa7f534)
+
 
 
 
