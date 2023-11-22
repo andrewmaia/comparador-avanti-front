@@ -32,9 +32,11 @@ Acesse o AWS Certificate Manager
 ![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
 
   
-
+E clique em "Criar registro no Route 53"
    
+![Screenshot_11](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/1e054ca0-1bd5-4f1c-abaa-6eeadd6f8695)
 
+![Screenshot_14](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c2376d3a-bcfd-4088-861f-4271c5c6164c)
 
 
 
