@@ -17,6 +17,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
+        { from: "src/sitemap.xml" },
         { from: "src/favicon.ico" },
         { from: "src/index.html" },
         { from: "src/index.css" },
