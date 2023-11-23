@@ -2,18 +2,67 @@
 
 ## Intruções para fazer o deploy deste projeto em uma conta AWS
 
-Para fazer deploy deste projeto basta configurar as credencias do AWS através do aws configure e apenas rodar o comando:
+Para fazer deploy deste projeto basta configurar as credencias da AWS através do comando "aws configure" e apenas rodar o comando:
 
 ```bash
 sam deploy -t codepipeline.yaml --stack-name comparador-avanti-front-pipeline --capabilities=CAPABILITY_IAM
 ```
-Depois que a pilha comparador-avanti-front-pipeline for finaliazada, a pipeline do projeto estará criada.
+Depois que a pilha comparador-avanti-front-pipeline for finalizada, a pipeline do projeto estará criada e será iniciada automaticamente.
 
 **Passos a serem feitos na primeira vez que rodar a pipeline:**
 
+1) O estágio "DeteccaoAlteracoesRepositorio" irá falhar caso tenha sido utilizada uma nova conexão com o github. Para corrigir isso basta editar a ação "SourceCodeRepo" e configurar a conexão com o github.
 
-Na primeira vez que pipeline rodar ela irá falhar no primeiro estágio. É necessário entrar manualmente no primeiro estágio e finalizar a configuração da conexão com o GITHUB.
+2) No estágio "CriarBucketFrontDnsDistribuicao" a publicação da pilha "comparador-avanti-front-prod" irá ficar paralisada até que a validação do certificado SSL do ACM sejá finalizada manualmente (a própria pilha cria esse certificado):
 
+![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
+
+Siga os passos abaixo para finalizar a validação do certificado.
+
+Acesse o Route 53  e encontre a zona hospedada do comparador avanti criada pela pilha "comparador-avanti-front-prod":
+
+![Screenshot_9](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c8851df6-f21c-43e8-a427-b0efbe31da5e)
+
+Copie duas DNS's do registro do tipo NS e aponte o dominio comparadoravanti.com.br no provedor onde foi comprado (no caso registro BR) para esses dois endereços
+
+![Screenshot_10](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/9af4a983-aacf-4263-91cd-903ce821bac6)
+
+Acesse o AWS Certificate Manager
+
+![Screenshot_12](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/cfdbb62d-a6ff-4cc3-b492-e22743e471b5)
+
+  
+E clique em "Criar registro no Route 53"
+   
+![Screenshot_11](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/1e054ca0-1bd5-4f1c-abaa-6eeadd6f8695)
+
+![Screenshot_14](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/c2376d3a-bcfd-4088-861f-4271c5c6164c)
+
+Esse registro irá fazer a validação do certificado. A AWS demora alguns minutos para fazer essa validação. Quando a validação estiver ok o status do certificado irá ficar como a seguir:
+
+![Screenshot_1](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/b5ea9ccd-433b-43ca-85d6-82f90aa7f534)
+
+Depois que a validação é finalizada a pilha "comparador-avanti-front-prod" continua e a pipeline é finalizada.
+
+3) Depois de finalizada a pipeline é necessário criar o registro no Route 53 que irá apontar para a distribuição do Cloudfront criado pela pilha "comparador-avanti-front-prod"
+
+Acesse a zona hospedada "comparadoravanti.com.br" no Route 53 novamente
+
+![Screenshot_2](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/351eeb1e-6849-4131-9239-41e95a5be3cb)
+
+Clique em criar registro
+
+![Screenshot_3](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/223e58a1-e487-47a6-bbef-f4955eea07af)
+
+Selecione a distribuição do CloudFront conforme a imagem abaixo e clique em "Criar Registro"
+
+![Screenshot_4](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/bbb64c2b-3e82-42bf-97c3-6c04747a933f)
+
+![Screenshot_5](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/afdc1d79-9e8d-4325-b877-ef690bfd52cd)
+
+Um novo registro é criado e o domínio agora está conectado a distribuição no CloudFront
+
+![Screenshot_15](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/f7c90f31-1e1b-4974-891c-ccf71578251d)
 
 
 
@@ -65,6 +114,8 @@ Depois de feito o deploy e criada a stack de recursos do front é possível excl
 ```bash
 sam delete
 ```
+
+Importante: Devido as configurações manuais feitas no recurso zona hospedada "comparadoravanti.com.br" é necessário excluir os registros do mesmo para que o comando acima consiga excluir a pilha.
 
 ## Deploy automático de infra e código através de Pipeline
 
