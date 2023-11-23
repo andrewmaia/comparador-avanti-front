@@ -41,15 +41,15 @@ Resources:
       DistributionConfig:
         Enabled: true
         Origins:
-          - DomainName: !GetAtt WebSiteBucket.DomainName
-            Id: !GetAtt WebSiteBucket.DomainName
+          - DomainName: !GetAtt WebSiteBucket.WebsiteURL
+            Id: !GetAtt WebSiteBucket.WebsiteURL
             CustomOriginConfig:
               OriginProtocolPolicy: "http-only"
               OriginSSLProtocols:
                 - "TLSv1.2"
         DefaultCacheBehavior:
           Compress: true
-          TargetOriginId: !GetAtt WebSiteBucket.DomainName
+          TargetOriginId: !GetAtt WebSiteBucket.WebsiteURL
           ViewerProtocolPolicy: "redirect-to-https"
           CachePolicyId: "658327ea-f89d-4fab-a63d-7e88639e58f6"
         Aliases:
