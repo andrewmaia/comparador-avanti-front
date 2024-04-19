@@ -13,8 +13,9 @@
 <!-- Event snippet for Clicou em comparar planos conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}  
   function gtag_report_conversion(url) {
-    alert("Convertido");
     var callback = function () {
       if (typeof(url) != 'undefined') {
         window.location = url;
