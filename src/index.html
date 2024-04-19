@@ -9,7 +9,23 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-KP2M9HHT');</script>
 	<!-- End Google Tag Manager -->	
- 
+
+<!-- Event snippet for Clicou em comparar planos conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-985359112/Oew9CP2moagZEIjG7dUD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Compare aqui qual plano Avanti compensa mais para você. Faça um teste!">
@@ -57,7 +73,7 @@
                 comparação
               </strong>
             </p>
-            <button id="btnComparar" type="button">Comparar</button>
+            <button id="btnComparar" type="button" onclick="gtag_report_conversion()">Comparar</button>
           </section>
           <h2 id="h2Resultado" style="display: none">Resultado</h2>
           <section id="secResultado" class="naoAparecer">
