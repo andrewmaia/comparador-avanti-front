@@ -62,8 +62,7 @@ Selecione a distribuição do CloudFront conforme a imagem abaixo e clique em "C
 
 Um novo registro é criado e o domínio agora está conectado a distribuição no CloudFront
 
-![Screenshot_15](https://github.com/andrewmaia/comparador-avanti-front/assets/2144032/f7c90f31-1e1b-4974-891c-ccf71578251d)
-
+![image](https://github.com/user-attachments/assets/f0365a56-9e73-4f54-b3e6-85eb3ca56aa8)
 
 
 ## Infra como código
